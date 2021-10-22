@@ -32,6 +32,11 @@ namespace Game
             _playerController = this.GetComponentInBranch<PlayerController, PlayerController>();
         }
 
+        public override bool CheckEnterTransition(CharacterState fromState)
+        {
+            return !_playerController.McStatisticParam.isNpcDetected;
+        }
+
         public override void EnterState(float dt, CharacterState fromState)
         {
             Messenger.RegisterListener<InputPhase, Vector3>(SystemMessage.Input, OnInputResponse);
@@ -40,6 +45,18 @@ namespace Game
         public override void ExitStateBehaviour(float dt, CharacterState toState)
         {
             Messenger.RemoveListener<InputPhase, Vector3>(SystemMessage.Input, OnInputResponse);
+        }
+
+        public override void CheckExitTransition()
+        {
+            if (_playerController.McStatisticParam.isNpcDetected)
+            {
+                CharacterStateController.EnqueueTransition<McKissState>();
+            }
+            else if (_playerController.McStatisticParam.beSlap)
+            {
+                
+            }
         }
 
         public override void UpdateBehaviour(float dt)
@@ -93,6 +110,7 @@ namespace Game
                     _deltaClick = Vector3.zero;
                     _lookDir = Vector3.zero;
                     _horizontalMove = 0;
+                    _playerController.PulseSensor();
                     _isTouch = false;
                     break;
                 default:
