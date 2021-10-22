@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Base
 {
-    public class CameraFollow3Rd : BaseMono
+    public class CameraFollow : BaseMono
     {
         [SerializeField] protected Transform followTarget;
         [SerializeField] protected Vector3 offset;
@@ -18,9 +18,12 @@ namespace Base
 
         public void FollowTarget()
         {
-            Vector3 desiredPos = followTarget.position - offset;
-            Vector3 smoothPos = Vector3.Lerp(Position, desiredPos, smoothSpeed);
-            Position.Set(smoothPos.x, Position.y, smoothPos.z);
+            if (offset != Vector3.zero)
+            {
+                Vector3 desiredPos = followTarget.position - offset;
+                Vector3 smoothPos = Vector3.Lerp(Position, desiredPos, smoothSpeed);
+                Position = new Vector3(smoothPos.x, Position.y, smoothPos.z);
+            }
         }
     }
 }

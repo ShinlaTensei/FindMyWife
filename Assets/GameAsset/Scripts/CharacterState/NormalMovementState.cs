@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Base;
@@ -43,13 +44,18 @@ namespace Game
 
         public override void UpdateBehaviour(float dt)
         {
+            
+        }
+
+        protected override void Update()
+        {
             if (_isTouch)
             {
                 HandlingMovement();
             }
         }
 
-        public override void PostUpdateBehaviour(float dt)
+        private void LateUpdate()
         {
             if (CharacterStateController.Animator == null)
             {
@@ -68,6 +74,7 @@ namespace Game
             
             CharacterStateController.Animator.SetFloat(speedParam, _horizontalMove);
         }
+        
 
         private void OnInputResponse(InputPhase phase, Vector3 inputPos)
         {
