@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: deead10a6d7975c428825f55ab64658c, type: 3}
+    - {fileID: 2800000, guid: 1f12cf209f7f63042890738dd2ff5773, type: 3}
+    - {fileID: 2800000, guid: acca35ad0a80ab24d96221a4fd5ae117, type: 3}
+    - {fileID: 2800000, guid: 51c7506dd81e3c1478a233d041f9a295, type: 3}
+    - {fileID: 2800000, guid: 667daa78fd2c3e54a82994fbeb95c0bc, type: 3}
+    - {fileID: 2800000, guid: cbfcfabf0d46eaf46897e2ead53c4d29, type: 3}
+    - {fileID: 2800000, guid: bd0e55954d1efab408f04c98b82b2513, type: 3}
+    - {fileID: 2800000, guid: 43eef371e810b10499959566dffaf884, type: 3}
+    - {fileID: 2800000, guid: 9f3c165ec8ac9964c8d53d9d4f8aee9a, type: 3}
+    - {fileID: 2800000, guid: f3d6911421c694b4cb33f13ab06946b2, type: 3}
+    - {fileID: 2800000, guid: 43f26b05046f9584e87679afc0f53234, type: 3}
+    - {fileID: 2800000, guid: b1c008e3968e69545a339a2eb85af7b8, type: 3}
+    - {fileID: 2800000, guid: bccbb9b1bf4c6d246aa906b628965813, type: 3}
+    - {fileID: 2800000, guid: 75f9010fd51da5c48861f90ce1f37c0c, type: 3}
+    - {fileID: 2800000, guid: b9953ea29a8031e488916fd1f8a962b5, type: 3}
+    - {fileID: 2800000, guid: de753c68ca551b74885d9252d41458c1, type: 3}
+    - {fileID: 2800000, guid: b5459b1053d940e468871f45c49f37e3, type: 3}
+    - {fileID: 2800000, guid: 2944d62db8377cf4a9925e7530e17500, type: 3}
+    - {fileID: 2800000, guid: 1b1ab29c43275704f894a8c140acffb6, type: 3}
+    - {fileID: 2800000, guid: 4a71a37a1f75a204bb138b7bc6d62165, type: 3}
+    totalSpriteSurfaceArea: 1855752
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b5459b1053d940e468871f45c49f37e3, type: 3}
+  - {fileID: 21300000, guid: 1f12cf209f7f63042890738dd2ff5773, type: 3}
+  - {fileID: 21300000, guid: 43eef371e810b10499959566dffaf884, type: 3}
+  - {fileID: 21300000, guid: bccbb9b1bf4c6d246aa906b628965813, type: 3}
+  - {fileID: 21300000, guid: b9953ea29a8031e488916fd1f8a962b5, type: 3}
+  - {fileID: 21300000, guid: b1c008e3968e69545a339a2eb85af7b8, type: 3}
+  - {fileID: 21300000, guid: f3d6911421c694b4cb33f13ab06946b2, type: 3}
+  - {fileID: 21300000, guid: 43f26b05046f9584e87679afc0f53234, type: 3}
+  - {fileID: 21300000, guid: bd0e55954d1efab408f04c98b82b2513, type: 3}
+  - {fileID: 21300000, guid: de753c68ca551b74885d9252d41458c1, type: 3}
+  - {fileID: 21300000, guid: 667daa78fd2c3e54a82994fbeb95c0bc, type: 3}
+  - {fileID: 21300000, guid: deead10a6d7975c428825f55ab64658c, type: 3}
+  - {fileID: 21300000, guid: 4a71a37a1f75a204bb138b7bc6d62165, type: 3}
+  - {fileID: 21300000, guid: 1b1ab29c43275704f894a8c140acffb6, type: 3}
+  - {fileID: 21300000, guid: 2944d62db8377cf4a9925e7530e17500, type: 3}
+  - {fileID: 21300000, guid: 51c7506dd81e3c1478a233d041f9a295, type: 3}
+  - {fileID: 21300000, guid: acca35ad0a80ab24d96221a4fd5ae117, type: 3}
+  - {fileID: 21300000, guid: 9f3c165ec8ac9964c8d53d9d4f8aee9a, type: 3}
+  - {fileID: 21300000, guid: 75f9010fd51da5c48861f90ce1f37c0c, type: 3}
+  - {fileID: 21300000, guid: cbfcfabf0d46eaf46897e2ead53c4d29, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tap to play _bar
+  - Blue Button Retry
+  - Haptic
+  - pop_text
+  - Sound_Off
+  - Pop up
+  - Icon Setting
+  - Icon_bar
+  - Green Button_OK
+  - SUCCESS
+  - Find my wife_bar
+  - Background Icon Setting
+  - OUT
+  - In
+  - 'TIME OUT '
+  - clock_icon
+  - clock_bar
+  - Haptic_off
+  - Sound
+  - Green Button_NEXT
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0
