@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BarMapTextures
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c16ff0e652ec0ed4ca85f66ed15b0954, type: 3}
+    - {fileID: 2800000, guid: c6889e3cf2ee466489958cdc3b04aeda, type: 3}
+    - {fileID: 2800000, guid: 371504967924b9641806e976019708cb, type: 3}
+    - {fileID: 2800000, guid: 20b579419c3747f4296b14079ac72e7a, type: 3}
+    - {fileID: 2800000, guid: aa455d75ccc44ce4d9a01ffca6e333f9, type: 3}
+    - {fileID: 2800000, guid: 70846f190f9c0a24db77d3414571a2fe, type: 3}
+    - {fileID: 2800000, guid: ada75e43172706b469b4fc49fabc3297, type: 3}
+    - {fileID: 2800000, guid: 9c68939b620ba4f4e92d466d53c5d936, type: 3}
+    - {fileID: 2800000, guid: 3ac687a1542bd264eb7fa76fa34505e1, type: 3}
+    - {fileID: 2800000, guid: 3377fc290549037469067d9dad5822f0, type: 3}
+    - {fileID: 2800000, guid: 5ae07888977f9e4448f328090dd2d01c, type: 3}
+    - {fileID: 2800000, guid: 37a7042161bade24087e5959fa060a92, type: 3}
+    - {fileID: 2800000, guid: a6d21cc12b359a948be0fc4036b08db8, type: 3}
+    - {fileID: 2800000, guid: 859b825b2fe9175409f03b26a01deb1e, type: 3}
+    - {fileID: 2800000, guid: cf5d2b78d9456af47b8b98b26e2ce924, type: 3}
+    totalSpriteSurfaceArea: 32644292
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 37a7042161bade24087e5959fa060a92, type: 3}
+  - {fileID: 21300000, guid: 20b579419c3747f4296b14079ac72e7a, type: 3}
+  - {fileID: 21300000, guid: 3ac687a1542bd264eb7fa76fa34505e1, type: 3}
+  - {fileID: 21300000, guid: a6d21cc12b359a948be0fc4036b08db8, type: 3}
+  - {fileID: 21300000, guid: ada75e43172706b469b4fc49fabc3297, type: 3}
+  - {fileID: 21300000, guid: aa455d75ccc44ce4d9a01ffca6e333f9, type: 3}
+  - {fileID: 21300000, guid: 371504967924b9641806e976019708cb, type: 3}
+  - {fileID: 21300000, guid: c16ff0e652ec0ed4ca85f66ed15b0954, type: 3}
+  - {fileID: 21300000, guid: cf5d2b78d9456af47b8b98b26e2ce924, type: 3}
+  - {fileID: 21300000, guid: 5ae07888977f9e4448f328090dd2d01c, type: 3}
+  - {fileID: 21300000, guid: 70846f190f9c0a24db77d3414571a2fe, type: 3}
+  - {fileID: 21300000, guid: 3377fc290549037469067d9dad5822f0, type: 3}
+  - {fileID: 21300000, guid: 859b825b2fe9175409f03b26a01deb1e, type: 3}
+  - {fileID: 21300000, guid: 9c68939b620ba4f4e92d466d53c5d936, type: 3}
+  - {fileID: 21300000, guid: c6889e3cf2ee466489958cdc3b04aeda, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Red Carpet
+  - Door
+  - Golden Wall
+  - Roof
+  - Gamentio _New_chair
+  - Floor
+  - DJ_Floor
+  - Bar_Table_-_Copy
+  - Wall_Posters
+  - Poster
+  - Furniture
+  - Lights
+  - Wall
+  - Gamentio_Table
+  - Beer_Bottles
+  m_RenderDataMap: {}
+  m_Tag: BarMapTextures
+  m_IsVariant: 0
