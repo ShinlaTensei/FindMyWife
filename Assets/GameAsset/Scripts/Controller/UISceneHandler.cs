@@ -5,28 +5,32 @@ using Base.GameEventSystem;
 using Base.Module;
 using UnityEngine;
 
-public class UISceneHandler : MonoBehaviour
+namespace Game
 {
-    [SerializeField] private List<GameObject> pagesList = new List<GameObject>();
-
-    private void Start()
+    public class UISceneHandler : MonoBehaviour
     {
-        for (int i = 0; i < pagesList.Count; i++)
+        [SerializeField] private List<GameObject> pagesList = new List<GameObject>();
+
+        private void Start()
         {
-            pagesList[i].SetActive(false);
+            for (int i = 0; i < pagesList.Count; i++)
+            {
+                pagesList[i].SetActive(false);
+            }
+        
+            pagesList[0].SetActive(true);
         }
-        
-        pagesList[0].SetActive(true);
-    }
 
-    public void OnStartStateNotify(GameEventData data)
-    {
+        public void OnStartStateNotify(GameEventData data)
+        {
         
-    }
+        }
 
-    public void OnPlayingStateNotify(GameEventData data)
-    {
-        pagesList[0].SetActive(false);
-        pagesList[1].SetActive(true);
+        public void OnPlayingStateNotify(GameEventData data)
+        {
+            pagesList[0].SetActive(false);
+            pagesList[1].SetActive(true);
+        }
     }
 }
+
