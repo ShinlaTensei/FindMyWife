@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5903251634578025794}
+  - component: {fileID: -1006875101281128621}
   m_Layer: 0
   m_Name: Woman_Update1_9
   m_TagString: Untagged
@@ -31,6 +32,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1006875101281128621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903251634578025795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f29e82326a5449911cce85a6f5f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  prefabId: 9
+  hint:
+  - hintType: 0
+    hintInfo: Black
+  - hintType: 1
+    hintInfo: Black
+  - hintType: 0
+    hintInfo: Beachwear
 --- !u!65 &5094573097107693147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,7 +162,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 95c763326805b7941a3bbf6daddb5346, type: 2}
+      objectReference: {fileID: 9100000, guid: 2dec315565ed29e4da15a412576fa169, type: 2}
     - target: {fileID: 5866666021909216657, guid: 6a8137b01615b94489fe1675dc5ce871,
         type: 3}
       propertyPath: m_ApplyRootMotion

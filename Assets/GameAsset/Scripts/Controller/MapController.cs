@@ -9,7 +9,9 @@ namespace Game
     {
         [SerializeField] private List<Transform> groupsList = new List<Transform>();
         [SerializeField] private List<Transform> pointsList = new List<Transform>();
-        
+
+        public List<Transform> SpawnPointList => pointsList;
+        public List<Transform> SpawnGroupList => groupsList;
         
         /// <summary>
         /// Get the spawn point position in points list

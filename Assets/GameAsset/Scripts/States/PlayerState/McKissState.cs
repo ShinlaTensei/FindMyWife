@@ -35,8 +35,9 @@ namespace Game
         {
             if (totalTime >= animationClipLength)
             {
+                playerController.NpcDetected.KissReaction();
                 playerController.McStatisticParam.isNpcDetected = false;
-                CharacterStateController.EnqueueTransition<NormalMovementState>();
+                CharacterStateController.EnqueueTransition<WaitingResultState>();
             }
         }
 

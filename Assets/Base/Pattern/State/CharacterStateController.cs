@@ -35,7 +35,7 @@ namespace Base.Pattern
         /// The animator associated with the state controller
         /// </summary>
         public Animator Animator { get => animator;
-            private set => animator = value;
+            set => animator = value;
         }
         
         /// <summary>

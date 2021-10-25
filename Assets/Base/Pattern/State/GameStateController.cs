@@ -89,11 +89,13 @@ namespace Base.Pattern
             AddAndInitializeState();
 
             inputHandler = gameObject.AddComponent<InputHandler>();
-            inputHandler.CreateInputAction();
+            
         }
         
         private void Start()
         {
+            inputHandler.CreateInputAction();
+            
             if (CurrentState != null)
             {
                 CurrentState.EnterStateBehaviour(0, CurrentState);

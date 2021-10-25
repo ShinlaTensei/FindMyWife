@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Base.Module;
 
-namespace Base.Module
+namespace Base.Editor
 {
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(CustomClassDrawer), true)]
     public class CustomClassDrawerEditor : PropertyDrawer
     {
@@ -113,5 +115,6 @@ namespace Base.Module
             arrowColor = new Color( 0.15f , 0.15f , 0.15f , 0.75f );
         }
     }
+    #endif
 }
 
