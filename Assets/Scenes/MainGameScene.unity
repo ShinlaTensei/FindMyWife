@@ -621,7 +621,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396342965}
-  m_LocalRotation: {x: 0.12094982, y: 0.0000000030417593, z: 0.00000002085277, w: 0.9926587}
+  m_LocalRotation: {x: 0.12094974, y: 0.0000000030418301, z: 0.00000002085277, w: 0.9926587}
   m_LocalPosition: {x: -26.83, y: 7.3, z: -102.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1484,7 +1484,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764408496}
-  m_LocalRotation: {x: 0.12094982, y: 0.0000000030417593, z: 0.00000002085277, w: 0.9926587}
+  m_LocalRotation: {x: 0.12094974, y: 0.0000000030418301, z: 0.00000002085277, w: 0.9926587}
   m_LocalPosition: {x: -26.83, y: 7.3, z: -102.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1524,6 +1524,7 @@ Transform:
   - {fileID: 188287249}
   - {fileID: 231889473}
   - {fileID: 1728442457}
+  - {fileID: 1808537441}
   m_Father: {fileID: 532059935}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3884,6 +3885,8 @@ MonoBehaviour:
   id: 0
   graphicsRoot: {fileID: 665179757}
   stateController: {fileID: 1207690797}
+  npcStatisticParam:
+    isAngry: 0
 --- !u!1001 &1031525241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5531,6 +5534,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808537440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808537441}
+  - component: {fileID: 1808537443}
+  - component: {fileID: 1808537442}
+  m_Layer: 0
+  m_Name: Hit Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1808537441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808537440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 799429239}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1808537442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808537440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1808537443
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808537440}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &1830267162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5615,6 +5679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931729551}
+  - component: {fileID: 1931729552}
   m_Layer: 0
   m_Name: Angry Slap
   m_TagString: Untagged
@@ -5636,6 +5701,22 @@ Transform:
   m_Father: {fileID: 1207690796}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931729552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931729550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674378165685e0048a6c26b878b6fdd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isOverrideAnimator: 1
+  runtimeAnimatorController: {fileID: 9100000, guid: 8127d495e3ed9c140b0a43194b01011c,
+    type: 2}
 --- !u!1 &1941386968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,6 +5757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1991658571}
+  - component: {fileID: 1991658572}
   m_Layer: 0
   m_Name: Waiting Result State
   m_TagString: Untagged
@@ -5697,6 +5779,25 @@ Transform:
   m_Father: {fileID: 188287249}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991658572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991658570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f26626407270540a2cb80a94d2a6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isOverrideAnimator: 1
+  runtimeAnimatorController: {fileID: 9100000, guid: 0b18fa36bcb30ed428029a3d851e2af8,
+    type: 2}
+  characterController: {fileID: 799429240}
+  reactParam: React
+  hitBox: {fileID: 1808537440}
 --- !u!1 &1993609299
 GameObject:
   m_ObjectHideFlags: 0

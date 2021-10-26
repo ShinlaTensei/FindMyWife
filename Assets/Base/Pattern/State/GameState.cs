@@ -20,14 +20,20 @@ namespace Base.Pattern
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="fromState"></param>
-        public virtual void EnterStateBehaviour(float dt, GameState fromState) { }
-        
+        public virtual void EnterStateBehaviour(float dt, GameState fromState)
+        {
+            Debug.Log("Enter " + name + " state");
+        }
+
         /// <summary>
         /// This method runs once when the state has exited the state machine
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="toState"></param>
-        public virtual void ExitStateBehaviour(float dt, GameState toState) {}
+        public virtual void ExitStateBehaviour(float dt, GameState toState)
+        {
+            Debug.Log("Exit " + name + " state");
+        }
 
         
         /// <summary>
@@ -54,6 +60,7 @@ namespace Base.Pattern
         /// </summary>
         public virtual void CheckExitTransition()
         {
+            
         }
 
         /// <summary>

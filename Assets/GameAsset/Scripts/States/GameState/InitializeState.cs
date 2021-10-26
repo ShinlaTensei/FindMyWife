@@ -12,6 +12,7 @@ namespace Game
         private AsyncOperation mainGameSceneOperation = null;
         public override void EnterStateBehaviour(float dt, GameState fromState)
         {
+            base.EnterStateBehaviour(dt, fromState);
             SceneManager.LoadSceneAsync("UIScene", LoadSceneMode.Additive);
             mainGameSceneOperation = SceneManager.LoadSceneAsync("MainGameScene", LoadSceneMode.Additive);
         }

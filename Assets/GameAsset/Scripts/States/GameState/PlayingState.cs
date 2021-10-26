@@ -15,6 +15,7 @@ namespace Game
 
         public override void EnterStateBehaviour(float dt, GameState fromState)
         {
+            base.EnterStateBehaviour(dt, fromState);
             playingStateNotify.InvokeEvent();
         }
 

@@ -37,7 +37,14 @@ namespace Game
             {
                 playerController.NpcDetected.KissReaction();
                 playerController.McStatisticParam.isNpcDetected = false;
-                CharacterStateController.EnqueueTransition<WaitingResultState>();
+                if (!playerController.McStatisticParam.isCorrectTarget)
+                {
+                    CharacterStateController.EnqueueTransition<WaitingResultState>();
+                }
+                else
+                {
+                    CharacterStateController.EnqueueTransition<EndBehaviorState>();
+                }
             }
         }
 

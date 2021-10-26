@@ -11,9 +11,9 @@ namespace Game
         [SerializeField] private Transform graphicsRoot;
         [SerializeField] private CharacterStateController stateController;
 
-        [SerializeField, ReadOnly] private McStatisticParam mcStatisticParam;
+        [SerializeField, ReadOnly] private NpcStatisticParam npcStatisticParam = new NpcStatisticParam();
 
-        public McStatisticParam McStatisticParam => mcStatisticParam;
+        public NpcStatisticParam NpcStatisticParam => npcStatisticParam;
 
         public bool IsTarget { get; private set; }
 
@@ -31,14 +31,14 @@ namespace Game
 
         public void KissReaction()
         {
-            
+            npcStatisticParam.isAngry = true;
         }
     }
     
     [System.Serializable]
     public class NpcStatisticParam
     {
-        
+        public bool isAngry = false;
     }
 }
 
