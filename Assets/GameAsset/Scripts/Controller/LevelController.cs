@@ -12,7 +12,9 @@ namespace Game
     {
         [SerializeField] private MapController[] mapsArr;
         [SerializeField] private NpcController npcPrefab;
+        [SerializeField] private AnimalController animalPrefab;
         [SerializeField] private List<TargetData> targetDataArr;
+        [SerializeField] private List<TargetData> targetAnimalArr;
         [SerializeField] private Transform sceneObject;
 
         private void Start()
@@ -23,6 +25,7 @@ namespace Game
 
         private void SetUpTarget()
         {
+            // Set up woman target
             TargetData randomTarget = targetDataArr.GetRandom();
             List<TargetData> listWithoutTarget = targetDataArr.ToList();
             listWithoutTarget.Remove(randomTarget);
@@ -59,6 +62,8 @@ namespace Game
             {
                 listNpc[i].AddGraphic(listWithoutTarget[i % length]);
             }
+            
+            
         }
     }
 }

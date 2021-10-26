@@ -35,15 +35,16 @@ namespace Game
         {
             if (totalTime >= animationClipLength)
             {
-                playerController.NpcDetected.KissReaction();
                 playerController.McStatisticParam.isNpcDetected = false;
                 if (!playerController.McStatisticParam.isCorrectTarget)
                 {
                     CharacterStateController.EnqueueTransition<WaitingResultState>();
+                    playerController.NpcDetected.KissReaction();
                 }
                 else
                 {
-                    CharacterStateController.EnqueueTransition<EndBehaviorState>();
+                    CharacterStateController.EnqueueTransition<NormalMovementState>();
+                    playerController.NpcDetected.KissReaction(CacheTransform);
                 }
             }
         }

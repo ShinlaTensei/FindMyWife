@@ -24,11 +24,6 @@ namespace Game
             startStateNotify.InvokeEvent(new GameEventData());
         }
 
-        public override void ExitStateBehaviour(float dt, GameState toState)
-        {
-            base.ExitStateBehaviour(dt, toState);
-        }
-
         public override void UpdateBehaviour(float dt)
         {
             

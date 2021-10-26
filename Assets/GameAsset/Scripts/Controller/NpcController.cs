@@ -16,8 +16,10 @@ namespace Game
         public NpcStatisticParam NpcStatisticParam => npcStatisticParam;
 
         public bool IsTarget { get; private set; }
+        
+        public bool IsCheck { get; private set; }
 
-
+        public Transform TransformToFollow { get; private set; }
         public void AddGraphic(TargetData child, bool isTarget = false)
         {
             graphicsRoot.DestroyAllChildren();
@@ -29,9 +31,19 @@ namespace Game
             stateController.Animator = children.GetChild(0).GetComponent<Animator>();
         }
 
-        public void KissReaction()
+        public void KissReaction(Transform transformToFollow = null)
         {
-            npcStatisticParam.isAngry = true;
+            IsCheck = true;
+            
+            if (!IsTarget)
+            {
+                npcStatisticParam.isAngry = true;
+            }
+            else
+            {
+                npcStatisticParam.isFollow = true;
+                TransformToFollow = transformToFollow;
+            }
         }
     }
     
@@ -39,6 +51,7 @@ namespace Game
     public class NpcStatisticParam
     {
         public bool isAngry = false;
+        public bool isFollow = false;
     }
 }
 

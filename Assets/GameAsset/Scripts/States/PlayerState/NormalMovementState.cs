@@ -53,10 +53,6 @@ namespace Game
             {
                 CharacterStateController.EnqueueTransition<McKissState>();
             }
-            else if (_playerController.McStatisticParam.beSlap)
-            {
-                
-            }
         }
 
         public override void UpdateBehaviour(float dt)

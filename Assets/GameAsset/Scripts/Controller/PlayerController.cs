@@ -49,7 +49,7 @@ namespace Game
         {
             List<NpcController> listNpcDetected = new List<NpcController>();
             NpcController npc = obj.GetComponent<NpcController>();
-            if (npc != null) listNpcDetected.Add(npc);
+            if (npc != null && !npc.IsCheck) listNpcDetected.Add(npc);
             await UniTask.WaitForEndOfFrame(_checkTargetToken.Token);
             
             _checkTargetToken.Cancel();

@@ -24,12 +24,21 @@ namespace Game
             
         }
 
+        public override bool CheckEnterTransition(CharacterState fromState)
+        {
+            return !_npcController.NpcStatisticParam.isAngry && !_npcController.NpcStatisticParam.isFollow;
+        }
+
         public override void CheckExitTransition()
         {
             if (_npcController.NpcStatisticParam.isAngry)
             {
                 _npcController.NpcStatisticParam.isAngry = false;
                 CharacterStateController.EnqueueTransition<WomanAngryState>();
+            }
+            else if (_npcController.NpcStatisticParam.isFollow)
+            {
+                CharacterStateController.EnqueueTransition<FollowState>();
             }
         }
 

@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   prefabId: 1
+  targetType: 0
   hint:
   - hintType: 0
     hintInfo: Black
@@ -66,6 +67,7 @@ MonoBehaviour:
     hintInfo: Black
   - hintType: 2
     hintInfo: Croptop, boots
+  hintAnimal: []
 --- !u!1001 &3263247122797741669
 PrefabInstance:
   m_ObjectHideFlags: 0
