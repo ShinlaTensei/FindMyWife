@@ -22,6 +22,7 @@ namespace Game
         public List<Hint>  Hint => hint;
 
         public List<HintAnimal> HintAnimals => hintAnimal;
+        public TargetType TargetType => targetType;
     }
     
     [System.Serializable]

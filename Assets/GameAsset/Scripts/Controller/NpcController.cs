@@ -3,6 +3,7 @@ using Base.Module;
 using Base.Pattern;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game
 {
@@ -12,6 +13,21 @@ namespace Game
         [SerializeField] private CharacterStateController stateController;
 
         [SerializeField, ReadOnly] private NpcStatisticParam npcStatisticParam = new NpcStatisticParam();
+
+        private NavMeshAgent _agent;
+
+        public NavMeshAgent Agent
+        {
+            get
+            {
+                if (_agent == null)
+                {
+                    _agent = GetComponent<NavMeshAgent>();
+                }
+
+                return _agent;
+            }
+        }
 
         public NpcStatisticParam NpcStatisticParam => npcStatisticParam;
 

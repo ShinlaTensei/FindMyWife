@@ -12,6 +12,9 @@ namespace Game
     {
         [SerializeField] private List<GameObject> pagesList = new List<GameObject>();
         [SerializeField] private List<HintUI> hintUis = new List<HintUI>();
+        [SerializeField] private List<HintUI> hintUiAnimals = new List<HintUI>();
+        
+        [SerializeField, Space] private GameObject womanHintPanel;
 
         private void Start()
         {
@@ -53,9 +56,20 @@ namespace Game
 
         private void OnRegisterTarget(TargetData target)
         {
-            for (int i = 0; i < hintUis.Count; ++i)
+            womanHintPanel.SetActive(target.TargetType == TargetType.Woman);
+            if (target.TargetType == TargetType.Woman)
             {
-                hintUis[i].SetHint(target.Hint[i].hintInfo);
+                for (int i = 0; i < hintUis.Count; ++i)
+                {
+                    hintUis[i].SetHint(target.Hint[i].hintInfo);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < hintUiAnimals.Count; ++i)
+                {
+                    hintUiAnimals[i].SetHint(target.HintAnimals[i].hintInfo);
+                }
             }
         }
     }

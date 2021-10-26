@@ -19,18 +19,12 @@ namespace Game
         protected override void Awake()
         {
             base.Awake();
-
-            _agent = this.GetComponentInBranch<NpcController, NavMeshAgent>();
             _npcController = this.GetComponentInBranch<NpcController, NpcController>();
         }
 
         public override void EnterState(float dt, CharacterState fromState)
         {
-            if (_agent == null)
-            {
-                _agent = this.GetComponentInBranch<PlayerController, NavMeshAgent>();
-            }
-
+            _agent = _npcController.Agent;
             _followTarget = _npcController.TransformToFollow;
         }
 

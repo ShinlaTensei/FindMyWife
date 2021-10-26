@@ -590,6 +590,7 @@ MonoBehaviour:
   - {fileID: 462543959}
   - {fileID: 787622101}
   - {fileID: 1817007583}
+  womanHintPanel: {fileID: 99772904}
 --- !u!114 &818081874
 MonoBehaviour:
   m_ObjectHideFlags: 0

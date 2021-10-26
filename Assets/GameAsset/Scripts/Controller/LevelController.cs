@@ -25,7 +25,7 @@ namespace Game
 
         private void SetUpTarget()
         {
-            // Set up woman target
+            // ---------------------------------------------- Set up woman target
             TargetData randomTarget = targetDataArr.GetRandom();
             List<TargetData> listWithoutTarget = targetDataArr.ToList();
             listWithoutTarget.Remove(randomTarget);
@@ -63,7 +63,31 @@ namespace Game
                 listNpc[i].AddGraphic(listWithoutTarget[i % length]);
             }
             
+            // -------------------------------------------------- Set up animal target
+            TargetData randomAnimalTarget = targetAnimalArr.GetRandom();
+            List<TargetData> listWithoutAnimalTarget = targetAnimalArr.ToList();
+            listWithoutAnimalTarget.Remove(randomAnimalTarget);
             
+            Messenger.RaiseMessage(GameMessage.RegisterTarget, randomAnimalTarget);
+            
+            List<Transform> spawnPointAnimalList = mapsArr[0].SpawnPointAnimalList.ToList();
+            spawnPointAnimalList.Shuffle();
+            List<AnimalController> listAnimal = new List<AnimalController>();
+            for (int i = 0; i < spawnPointAnimalList.Count; ++i)
+            {
+                AnimalController animal = Instantiate(animalPrefab, spawnPointAnimalList[i].position, spawnPointAnimalList[i].rotation, sceneObject);
+                listAnimal.Add(animal);
+            }
+            
+            listAnimal.Shuffle();
+            AnimalController targetAnimal = listAnimal[0];
+            listAnimal.Remove(targetAnimal);
+            targetAnimal.AddGraphic(randomAnimalTarget, true);
+            int animalLength = listWithoutAnimalTarget.Count;
+            for (int i = 0; i < animalLength; ++i)
+            {
+                listAnimal[i].AddGraphic(listWithoutAnimalTarget[i % animalLength]);
+            }
         }
     }
 }
