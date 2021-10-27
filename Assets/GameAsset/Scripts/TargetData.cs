@@ -15,13 +15,21 @@ namespace Game
         [SerializeField, CustomClassDrawer, ShowIf("targetType", TargetType.Woman)] private List<Hint> hint;
 
         [SerializeField, CustomClassDrawer, ShowIf("targetType", TargetType.Animal)]
-        private List<HintAnimal> hintAnimal;
+        private List<Hint> hintAnimal;
 
         public int PrefabId => prefabId;
 
-        public List<Hint>  Hint => hint;
+        public List<Hint> Hint
+        {
+            get
+            {
+                if (targetType == TargetType.Woman) return hint;
 
-        public List<HintAnimal> HintAnimals => hintAnimal;
+                return hintAnimal;
+            }
+        }
+
+        //public List<HintAnimal> HintAnimals => hintAnimal;
         public TargetType TargetType => targetType;
     }
     
@@ -35,13 +43,13 @@ namespace Game
     [System.Serializable]
     public class HintAnimal
     {
-        public HintTypeAnimal hintTypeAnimal;
+        public Hint hintTypeAnimal;
         public string hintInfo;
     }
     
-    public enum HintType {Skin, Hair, Outfit}
+    public enum HintType {Skin, Hair, Outfit, Bread, Color}
     
-    public enum HintTypeAnimal {Bread, CoatColor}
+    //public enum HintTypeAnimal {Bread, CoatColor}
     
     public enum TargetType {Woman, Animal}
 }

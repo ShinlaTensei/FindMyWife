@@ -49,9 +49,9 @@ MonoBehaviour:
   targetType: 1
   hint: []
   hintAnimal:
-  - hintTypeAnimal: 0
+  - hintType: 3
     hintInfo: Malamute
-  - hintTypeAnimal: 1
+  - hintType: 4
     hintInfo: Black and white
 --- !u!1001 &7107086612115380847
 PrefabInstance:

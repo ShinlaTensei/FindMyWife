@@ -19,6 +19,14 @@ namespace Game
             playingStateNotify.InvokeEvent();
         }
 
+        public override void CheckExitTransition()
+        {
+            if (GameManager.GameStatisticParam.isEndPointReach)
+            {
+                GameStateController.EnqueueTransition<EndState>();
+            }
+        }
+
         public override void UpdateBehaviour(float dt)
         {
             Messenger.RaiseMessage(SystemMessage.Input, inputAction.Phase, inputAction.Position);

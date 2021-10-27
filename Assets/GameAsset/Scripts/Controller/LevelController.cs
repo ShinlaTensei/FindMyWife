@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Base;
 using Base.MessageSystem;
+using SensorToolkit;
 using UnityEngine;
 
 namespace Game
@@ -16,17 +17,38 @@ namespace Game
         [SerializeField] private List<TargetData> targetDataArr;
         [SerializeField] private List<TargetData> targetAnimalArr;
         [SerializeField] private Transform sceneObject;
+        [SerializeField] private ObjectiveController objectiveController;
 
         private void Start()
         {
+            objectiveController.ClearAll();
             SetUpTarget();
+            Messenger.RegisterListener<TargetType, int>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            Messenger.RemoveListener<TargetType, int>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
+        }
 
+        private void OnObjectiveCheck(TargetType type, int prefabId)
+        {
+            bool isComplete = objectiveController.CheckObjective(type, prefabId);
+            if (isComplete)
+            {
+                Messenger.RaiseMessage(GameMessage.ObjectiveComplete, prefabId);
+            }
+        }
+        
         private void SetUpTarget()
         {
             // ---------------------------------------------- Set up woman target
             TargetData randomTarget = targetDataArr.GetRandom();
+
+            Objective objective1 = new Objective() { isCompleted = false, objectiveId = randomTarget.PrefabId, objectiveType = randomTarget.TargetType };
+
             List<TargetData> listWithoutTarget = targetDataArr.ToList();
             listWithoutTarget.Remove(randomTarget);
             
@@ -68,6 +90,9 @@ namespace Game
             
             // -------------------------------------------------- Set up animal target
             TargetData randomAnimalTarget = targetAnimalArr.GetRandom();
+
+            Objective objective2 = new Objective() { isCompleted = false, objectiveId = randomAnimalTarget.PrefabId, objectiveType = randomAnimalTarget.TargetType };
+            
             List<TargetData> listWithoutAnimalTarget = targetAnimalArr.ToList();
             listWithoutAnimalTarget.Remove(randomAnimalTarget);
             
@@ -91,6 +116,16 @@ namespace Game
             for (int i = 0; i < animalLength; ++i)
             {
                 listAnimal[i].AddGraphic(listWithoutAnimalTarget[i % animalLength]);
+            }
+            
+            objectiveController.AddObjective(new[] {objective1, objective2});
+        }
+
+        public void OnEndPointReach(GameObject obj, Sensor sensor)
+        {
+            if (objectiveController.IsAllObjectiveCompleted)
+            {
+                GameManager.GameStatisticParam.isEndPointReach = true;
             }
         }
     }

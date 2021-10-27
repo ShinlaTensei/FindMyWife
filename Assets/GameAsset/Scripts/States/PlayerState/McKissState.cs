@@ -2,6 +2,7 @@ using Base;
 using Base.Module;
 using Base.Pattern;
 using UnityEngine;
+using Base.MessageSystem;
 
 namespace Game
 {
@@ -45,6 +46,9 @@ namespace Game
                 else
                 {
                     CharacterStateController.EnqueueTransition<NormalMovementState>();
+                    
+                    TargetData targetData = playerController.NpcDetected.TargetData;
+                    Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId);
                 }
             }
         }

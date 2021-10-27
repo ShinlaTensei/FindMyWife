@@ -49,9 +49,9 @@ MonoBehaviour:
   targetType: 1
   hint: []
   hintAnimal:
-  - hintTypeAnimal: 0
+  - hintType: 3
     hintInfo: Cocker
-  - hintTypeAnimal: 1
+  - hintType: 4
     hintInfo: White
 --- !u!1001 &792633921041572628
 PrefabInstance:

@@ -49,9 +49,9 @@ MonoBehaviour:
   targetType: 1
   hint: []
   hintAnimal:
-  - hintTypeAnimal: 0
+  - hintType: 3
     hintInfo: Sichu
-  - hintTypeAnimal: 1
+  - hintType: 4
     hintInfo: Brown and white
 --- !u!1001 &8471790531009361516
 PrefabInstance:

@@ -51,9 +51,9 @@ MonoBehaviour:
   - hintType: 0
     hintInfo: 
   hintAnimal:
-  - hintTypeAnimal: 0
+  - hintType: 3
     hintInfo: Bull dog
-  - hintTypeAnimal: 1
+  - hintType: 4
     hintInfo: Black and white
 --- !u!1001 &7297006451892205971
 PrefabInstance:

@@ -221,6 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8602d9dfd0dc159499d9be104bbe948d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  gameStatisticParam:
+    isEndPointReach: 0
+    isReplay: 0
+  gameStateController: {fileID: 983410077}
 --- !u!114 &315770273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  endGameNotify: {fileID: 11400000, guid: b6cd0ac3d17ee7c4291db2451de8fcc9, type: 2}
 --- !u!1 &983410075
 GameObject:
   m_ObjectHideFlags: 0
