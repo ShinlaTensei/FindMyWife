@@ -76,6 +76,8 @@ namespace Game
                 finalTarget.Position = kissPoint.position;
                 finalTarget.Rotation = kissPoint.rotation;
                 NpcDetected = finalTarget;
+                if (NpcDetected is AnimalController) mcStatisticParam.actionValue = 1f;
+                else mcStatisticParam.actionValue = 0;
             }
         }
     }
@@ -86,6 +88,7 @@ namespace Game
         public bool isNpcDetected = false;
         public bool beSlap = false;
         public bool isCorrectTarget = false;
+        public float actionValue = 0;
     }
 }
 

@@ -22,11 +22,21 @@ namespace Game
         private bool _isHit = false;
         private float _totalTime = 0;
         private float _crrClipTime = 0;
+
+        private TargetType _crrTargetType = TargetType.Woman;
         public override void EnterState(float dt, CharacterState fromState)
         {
             _cancellation = new CancellationTokenSource();
             _playerController = characterController.GetComponent<PlayerController>();
-            WaitForGetSlap().Forget();
+            if (_playerController.NpcDetected)
+            {
+                _crrTargetType = _playerController.NpcDetected.TargetData.TargetType;
+                if (_crrTargetType == TargetType.Woman)
+                {
+                    WaitForGetSlap().Forget();
+                }
+                else _crrClipTime = 3f;
+            }
         }
 
         public override void ExitStateBehaviour(float dt, CharacterState toState)

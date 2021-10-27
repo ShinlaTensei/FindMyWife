@@ -42,9 +42,7 @@ namespace Base.Pattern
         protected virtual void OnDisable() {}
         
         protected virtual void Update() {}
-        
-        protected virtual void FixedUpdate() {}
-        
+
         protected override void OnDestroy() {base.OnDestroy();}
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace Base.Pattern
         /// <summary>
         /// This method runs every frame, and should be implement by derived class
         /// </summary>
-        /// <param name="dt"></param>
+        /// <param name="dt"> The fixed delta time in every frame </param>
         public abstract void UpdateBehaviour(float dt);
 
         /// <summary>

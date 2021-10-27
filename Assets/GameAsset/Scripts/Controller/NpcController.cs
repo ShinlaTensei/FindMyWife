@@ -9,12 +9,14 @@ namespace Game
 {
     public class NpcController : BaseMono
     {
-        [SerializeField] private Transform graphicsRoot;
-        [SerializeField] private CharacterStateController stateController;
+        [SerializeField] protected Transform graphicsRoot;
+        [SerializeField] protected CharacterStateController stateController;
 
-        [SerializeField, ReadOnly] private NpcStatisticParam npcStatisticParam = new NpcStatisticParam();
+        [SerializeField, ReadOnly] protected NpcStatisticParam npcStatisticParam = new NpcStatisticParam();
 
-        private NavMeshAgent _agent;
+        protected NavMeshAgent _agent;
+        
+        public TargetData TargetData { get; protected set; }
 
         public NavMeshAgent Agent
         {
@@ -31,23 +33,23 @@ namespace Game
 
         public NpcStatisticParam NpcStatisticParam => npcStatisticParam;
 
-        public bool IsTarget { get; private set; }
+        public bool IsTarget { get; protected set; }
         
-        public bool IsCheck { get; private set; }
+        public bool IsCheck { get; protected set; }
 
-        public Transform TransformToFollow { get; private set; }
-        public void AddGraphic(TargetData child, bool isTarget = false)
+        public Transform TransformToFollow { get; protected set; }
+        public virtual void AddGraphic(TargetData child, bool isTarget = false)
         {
             graphicsRoot.DestroyAllChildren();
             Transform children = Instantiate(child.transform, graphicsRoot);
             children.localPosition = Vector3.zero;
             children.localRotation = Quaternion.identity;
-            
+            TargetData = child;
             IsTarget = isTarget;
             stateController.Animator = children.GetChild(0).GetComponent<Animator>();
         }
 
-        public void KissReaction(Transform transformToFollow = null)
+        public virtual void InteractReaction(Transform transformToFollow = null)
         {
             IsCheck = true;
             
@@ -68,6 +70,7 @@ namespace Game
     {
         public bool isAngry = false;
         public bool isFollow = false;
+        public float idleValue = 0;
     }
 }
 

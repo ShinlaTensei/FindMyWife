@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Base;
 using Base.Module;
 using Base.Pattern;
 using UnityEngine;
@@ -8,6 +7,7 @@ namespace Game
 {
     public class McKissState : CharacterState
     {
+        [SerializeField] private string actionParam = "Action";
         private PlayerController playerController;
 
         private float animationClipLength = 0;
@@ -23,12 +23,14 @@ namespace Game
 
         public override void EnterState(float dt, CharacterState fromState)
         {
+            CharacterStateController.Animator.SetFloat(actionParam, Mathf.Clamp01(playerController.McStatisticParam.actionValue));
             CharacterStateController.Animator.GetCurrentClipLength(ref animationClipLength);
         }
 
         public override void ExitStateBehaviour(float dt, CharacterState toState)
         {
             totalTime = 0;
+            playerController.NpcDetected.InteractReaction(CacheTransform);
         }
 
         public override void CheckExitTransition()
@@ -39,12 +41,10 @@ namespace Game
                 if (!playerController.McStatisticParam.isCorrectTarget)
                 {
                     CharacterStateController.EnqueueTransition<WaitingResultState>();
-                    playerController.NpcDetected.KissReaction();
                 }
                 else
                 {
                     CharacterStateController.EnqueueTransition<NormalMovementState>();
-                    playerController.NpcDetected.KissReaction(CacheTransform);
                 }
             }
         }
@@ -53,6 +53,15 @@ namespace Game
         {
             totalTime += dt;
         }
+
+        // public override void PostUpdateBehaviour(float dt)
+        // {
+        //     if (CharacterStateController.Animator == null) return;
+        //     if (CharacterStateController.Animator.runtimeAnimatorController == null) return;
+        //     if (!CharacterStateController.Animator.gameObject.activeSelf) return;
+        //     
+        //     CharacterStateController.Animator.SetFloat(actionParam, Mathf.Clamp01(playerController.McStatisticParam.actionValue));
+        // }
     }
 }
 

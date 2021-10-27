@@ -59,7 +59,7 @@ namespace Game
                 return;
             }
             
-            CharacterStateController.Animator.SetFloat(animatorParamName, 0);
+            CharacterStateController.Animator.SetFloat(animatorParamName, _npcController.NpcStatisticParam.idleValue);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Base.Pattern
         /// <summary>
         /// This method runs every frame, and should be implement by derived class
         /// </summary>
-        /// <param name="dt"></param>
+        /// <param name="dt"> the delta time in every frame </param>
         public abstract void UpdateBehaviour(float dt);
 
         /// <summary>

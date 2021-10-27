@@ -85,7 +85,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 49ccc0dc4a769084a830c5aed03fe6ab,
+    m_Motion: {fileID: -203655887218126122, guid: 5d68be5b5e344304881dad1e199f9e06,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -120,10 +120,19 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Normal
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 7c36a9c7f443ab44187b91183eef4bc5,
+      type: 3}
+    m_Threshold: 4
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Normal
+    m_Mirror: 0
   m_BlendParameter: Normal
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 3
+  m_MaxThreshold: 4
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

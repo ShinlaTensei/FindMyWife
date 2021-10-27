@@ -41,6 +41,8 @@ namespace Game
             {
                 NpcController npc = Instantiate(npcPrefab, spawnPointList[i].position, spawnPointList[i].rotation, sceneObject);
                 listNpc.Add(npc);
+
+                npc.NpcStatisticParam.idleValue = i % 5f;
             }
 
             for (int i = 0; i < spawnPointsGroup.Count; ++i)
@@ -49,6 +51,7 @@ namespace Game
                 {
                     NpcController npc = Instantiate(npcPrefab, spawnPointsGroup[i].GetChild(j).position, spawnPointsGroup[i].GetChild(j).rotation, sceneObject);
                     listNpc.Add(npc);
+                    npc.NpcStatisticParam.idleValue = j % 5f;
                 }
             }
             
@@ -77,6 +80,7 @@ namespace Game
             {
                 AnimalController animal = Instantiate(animalPrefab, spawnPointAnimalList[i].position, spawnPointAnimalList[i].rotation, sceneObject);
                 listAnimal.Add(animal);
+                animal.NpcStatisticParam.idleValue = i % 4f;
             }
             
             listAnimal.Shuffle();

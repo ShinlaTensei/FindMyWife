@@ -56,7 +56,7 @@ namespace Game
 
         private void OnRegisterTarget(TargetData target)
         {
-            womanHintPanel.SetActive(target.TargetType == TargetType.Woman);
+            //womanHintPanel.SetActive(target.TargetType == TargetType.Woman);
             if (target.TargetType == TargetType.Woman)
             {
                 for (int i = 0; i < hintUis.Count; ++i)
