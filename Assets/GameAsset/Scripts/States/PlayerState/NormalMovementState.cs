@@ -65,9 +65,10 @@ namespace Game
             {
                 _playerController.McStatisticParam.isCarDetected = false;
                 TargetData targetData = _playerController.McStatisticParam.carDetected;
-                if (targetData.IsObjectiveActive)
+                Objective currentObjective = _playerController.ObjectiveController.CurrentObjective;
+                if (targetData.PrefabId == currentObjective.objectiveId)
                 {
-                    Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId);
+                    Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId, targetData.transform.root.position);
                 }
             }
         }

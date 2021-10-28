@@ -19,27 +19,30 @@ namespace Game
         [SerializeField] private Transform sceneObject;
         [SerializeField] private ObjectiveController objectiveController;
         [SerializeField] private List<TargetData> targetCarArr;
+        [SerializeField, Space] private ParticleSystem objectiveVfx;
 
         private void Start()
         {
             objectiveController.ClearAll();
             SetUpTarget();
-            Messenger.RegisterListener<TargetType, int>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
+            Messenger.RegisterListener<TargetType, int, Vector3>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             
-            Messenger.RemoveListener<TargetType, int>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
+            Messenger.RemoveListener<TargetType, int, Vector3>(GameMessage.ObjectiveCheck, OnObjectiveCheck);
         }
 
-        private void OnObjectiveCheck(TargetType type, int prefabId)
+        private void OnObjectiveCheck(TargetType type, int prefabId, Vector3 position)
         {
             bool isComplete = objectiveController.CheckObjective(type, prefabId);
             if (isComplete)
             {
                 Messenger.RaiseMessage(GameMessage.ObjectiveComplete, prefabId);
+                objectiveVfx.transform.position = position;
+                objectiveVfx.Play(true);
             }
 
             if (objectiveController.IsAllObjectiveCompleted)

@@ -37,7 +37,7 @@ namespace Game
         {
             if (to is InitializeState)
             {
-                gameStatisticParam = new GameStatisticParam();
+                gameStatisticParam.Reset();
             }
         }
     }
@@ -47,6 +47,14 @@ namespace Game
     {
         public bool isEndPointReach = false;
         public bool isReplay = false;
+        public bool isTimeOut = false;
+
+        public void Reset()
+        {
+            isReplay = false;
+            isTimeOut = false;
+            isEndPointReach = false;
+        }
     }
     
     public enum GameMessage {RegisterTarget, ObjectiveComplete, ObjectiveCheck}

@@ -15,11 +15,11 @@ namespace Game
     {
         [SerializeField] private RangeSensor rangeSensor;
         [SerializeField] private Transform kissPoint;
-        
+        [SerializeField] private ObjectiveController objectiveController;
         [SerializeField, ReadOnly] private McStatisticParam mcStatisticParam;
 
         public McStatisticParam McStatisticParam => mcStatisticParam;
-        
+        public ObjectiveController ObjectiveController => objectiveController;
         public NpcController NpcDetected { get; private set; }
         
         private CancellationTokenSource _checkTargetToken = new CancellationTokenSource();

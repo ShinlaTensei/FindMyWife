@@ -73,9 +73,10 @@ namespace Game
             }
             else
             {
+                IsCheck = true;
                 npcStatisticParam.isFollow = true;
                 TransformToFollow = transformToFollow;
-                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId);
+                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId, Position);
             }
         }
     }

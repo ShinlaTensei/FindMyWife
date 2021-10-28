@@ -21,8 +21,6 @@ namespace Game
         private List<Hint> hintCar;
 
         public int PrefabId => prefabId;
-        
-        public bool IsObjectiveActive { get; set; }
 
         public List<Hint> Hint
         {

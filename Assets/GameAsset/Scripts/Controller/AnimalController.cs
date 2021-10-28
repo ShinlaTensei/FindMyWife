@@ -9,9 +9,10 @@ namespace Game
         {
             if (IsTarget)
             {
+                IsCheck = true;
                 TransformToFollow = transformToFollow;
                 npcStatisticParam.isFollow = true;
-                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId);
+                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId, Position);
             }
             else
             {

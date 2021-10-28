@@ -25,6 +25,10 @@ namespace Game
             {
                 GameStateController.EnqueueTransition<EndState>();
             }
+            else if (GameManager.GameStatisticParam.isTimeOut)
+            {
+                GameStateController.EnqueueTransition<EndState>();
+            }
         }
 
         public override void UpdateBehaviour(float dt)

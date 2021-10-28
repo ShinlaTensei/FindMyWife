@@ -13,9 +13,12 @@ namespace Game
         [SerializeField] private List<GameObject> pagesList = new List<GameObject>();
         [SerializeField] private List<HintUI> hintUis = new List<HintUI>();
         [SerializeField] private List<HintUI> hintUiAnimals = new List<HintUI>();
+        [SerializeField] private List<HintUI> hintUiCars = new List<HintUI>();
         
         [SerializeField, Space] private GameObject womanHintPanel;
         [SerializeField] private GameObject animalHintPanel;
+        [SerializeField] private GameObject carHintPanel;
+        [SerializeField, Space] private Timer timer;
 
         private List<TargetData> _targetDataList = new List<TargetData>();
 
@@ -48,6 +51,8 @@ namespace Game
             pagesList[2].SetActive(false);
             
             InitHint();
+            timer.OnTimerRun(true);
+            timer.Init(1);
         }
 
         public void OnEndStateNotify(GameEventData data)
@@ -71,18 +76,30 @@ namespace Game
                 {
                     womanHintPanel.SetActive(true);
                     animalHintPanel.SetActive(false);
+                    carHintPanel.SetActive(false);
                     for (int i = 0; i < hintUis.Count; ++i)
                     {
                         hintUis[i].SetHint(data.Hint[i].hintInfo);
                     }
                 }
-                else
+                else if (data.TargetType == TargetType.Animal)
                 {
                     womanHintPanel.SetActive(false);
                     animalHintPanel.SetActive(true);
+                    carHintPanel.SetActive(false);
                     for (int i = 0; i < hintUis.Count - 1; ++i)
                     {
                         hintUiAnimals[i].SetHint(data.Hint[i].hintInfo);
+                    }
+                }
+                else
+                {
+                    womanHintPanel.SetActive(false);
+                    animalHintPanel.SetActive(false);
+                    carHintPanel.SetActive(true);
+                    for (int i = 0; i < hintUis.Count - 1; ++i)
+                    {
+                        hintUiCars[i].SetHint(data.Hint[i].hintInfo);
                     }
                 }
             }

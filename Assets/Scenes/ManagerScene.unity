@@ -283,6 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   endGameNotify: {fileID: 11400000, guid: b6cd0ac3d17ee7c4291db2451de8fcc9, type: 2}
+  objectiveController: {fileID: 11400000, guid: 72438db735a4fa847ab1d165d89dbc90,
+    type: 2}
 --- !u!1 &983410075
 GameObject:
   m_ObjectHideFlags: 0
