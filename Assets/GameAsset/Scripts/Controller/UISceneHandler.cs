@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Base.GameEventSystem;
 using Base.MessageSystem;
-using Base.Module;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -19,6 +19,9 @@ namespace Game
         [SerializeField] private GameObject animalHintPanel;
         [SerializeField] private GameObject carHintPanel;
         [SerializeField, Space] private Timer timer;
+
+        [SerializeField, Space] private List<GameObject> endPageChild = new List<GameObject>();
+        [SerializeField] private Text levelText;
 
         private List<TargetData> _targetDataList = new List<TargetData>();
 
@@ -53,6 +56,7 @@ namespace Game
             InitHint();
             timer.OnTimerRun(true);
             timer.Init(1);
+            levelText.text = $"Level {GameManager.GameStatisticParam.levelIndex}";
         }
 
         public void OnEndStateNotify(GameEventData data)
@@ -60,6 +64,10 @@ namespace Game
             pagesList[0].SetActive(false);
             pagesList[1].SetActive(false);
             pagesList[2].SetActive(true);
+
+            bool isWin = (bool) data.Data;
+            endPageChild[0].SetActive(!isWin);
+            endPageChild[1].SetActive(isWin);
         }
 
         public void OnReplayClick()
@@ -121,7 +129,6 @@ namespace Game
         private void OnRegisterTarget(TargetData target)
         {
             _targetDataList.Add(target);
-            //womanHintPanel.SetActive(target.TargetType == TargetType.Woman);
         }
 
         private void OnObjectiveComplete(int prefabId)

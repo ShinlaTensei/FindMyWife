@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Base;
+using Base.GameEventSystem;
 using Base.Pattern;
 using NaughtyAttributes;
 using UnityEngine;
@@ -11,6 +10,8 @@ namespace Game
     {
         [SerializeField, ReadOnly] private GameStatisticParam gameStatisticParam = new GameStatisticParam();
         [SerializeField] private GameStateController gameStateController;
+        [SerializeField] private ObjectiveController objectiveController;
+        [SerializeField, Space] private GameEvent endGameNotify;
         public static GameStatisticParam GameStatisticParam => Instance.gameStatisticParam;
         // Start is called before the first frame update
         void Start()
@@ -18,12 +19,6 @@ namespace Game
             Application.targetFrameRate = 60;
 
             gameStateController.OnStateChanged += OnStateChanged;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
 
         protected override void OnDestroy()
@@ -39,6 +34,12 @@ namespace Game
             {
                 gameStatisticParam.Reset();
             }
+            else if (to is EndState)
+            {
+                bool isWin = objectiveController.IsAllObjectiveCompleted;
+                endGameNotify.InvokeEvent(new GameEventData(isWin));
+                gameStatisticParam.levelIndex += isWin ? 1 : 0;
+            }
         }
     }
     
@@ -48,6 +49,7 @@ namespace Game
         public bool isEndPointReach = false;
         public bool isReplay = false;
         public bool isTimeOut = false;
+        public int levelIndex = 1;
 
         public void Reset()
         {

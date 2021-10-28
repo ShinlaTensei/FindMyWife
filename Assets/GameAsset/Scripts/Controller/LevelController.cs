@@ -20,6 +20,7 @@ namespace Game
         [SerializeField] private ObjectiveController objectiveController;
         [SerializeField] private List<TargetData> targetCarArr;
         [SerializeField, Space] private ParticleSystem objectiveVfx;
+        [SerializeField] private Animator cinemachineStateDriven;
 
         private void Start()
         {
@@ -48,6 +49,7 @@ namespace Game
             if (objectiveController.IsAllObjectiveCompleted)
             {
                 GameManager.GameStatisticParam.isEndPointReach = true;
+                cinemachineStateDriven.Play("End");
             }
         }
         
@@ -131,6 +133,7 @@ namespace Game
 
             TargetData car = targetCarArr.GetRandom();
             objectiveController.AddObjective(new Objective() {isCompleted = false, objectiveId = car.PrefabId, objectiveType = car.TargetType});
+            Messenger.RaiseMessage(GameMessage.RegisterTarget, car);
         }
     }
 }
