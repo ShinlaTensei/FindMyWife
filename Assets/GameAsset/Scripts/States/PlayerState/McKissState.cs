@@ -58,14 +58,14 @@ namespace Game
             totalTime += dt;
         }
 
-        // public override void PostUpdateBehaviour(float dt)
-        // {
-        //     if (CharacterStateController.Animator == null) return;
-        //     if (CharacterStateController.Animator.runtimeAnimatorController == null) return;
-        //     if (!CharacterStateController.Animator.gameObject.activeSelf) return;
-        //     
-        //     CharacterStateController.Animator.SetFloat(actionParam, Mathf.Clamp01(playerController.McStatisticParam.actionValue));
-        // }
+        public override void PostUpdateBehaviour(float dt)
+        {
+            if (CharacterStateController.Animator == null) return;
+            if (CharacterStateController.Animator.runtimeAnimatorController == null) return;
+            if (!CharacterStateController.Animator.gameObject.activeSelf) return;
+            
+            CharacterStateController.Animator.SetFloat(actionParam, Mathf.Clamp01(playerController.McStatisticParam.actionValue));
+        }
     }
 }
 

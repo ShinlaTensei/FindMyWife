@@ -42,6 +42,8 @@ namespace Game
 
         public override void ExitStateBehaviour(float dt, CharacterState toState)
         {
+            _crrClipTime = 0;
+            _totalTime = 0;
             if (_cancellation != null)
             {
                 _cancellation.Cancel();
