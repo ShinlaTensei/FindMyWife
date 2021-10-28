@@ -12,6 +12,14 @@ namespace Game
 
         public List<Objective> ObjectiveList => objectiveList;
 
+        public Objective CurrentObjective
+        {
+            get
+            {
+                return objectiveList.Find(item => !item.isCompleted);
+            }
+        }
+
         public bool IsAllObjectiveCompleted
         {
             get
@@ -23,7 +31,7 @@ namespace Game
         public bool CheckObjective(TargetType type, int prefabId)
         {
             Objective obj = objectiveList.Find(item => item.objectiveType == type && item.objectiveId == prefabId);
-            if (obj != null)
+            if (obj != null && CurrentObjective.Equals(obj))
             {
                 obj.isCompleted = true;
                 return true;

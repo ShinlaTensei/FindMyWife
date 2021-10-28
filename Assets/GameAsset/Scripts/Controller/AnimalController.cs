@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Base;
-using Base.Pattern;
 using UnityEngine;
-using UnityEngine.AI;
+using Base.MessageSystem;
 
 namespace Game
 {
@@ -12,15 +7,16 @@ namespace Game
     {
         public override void InteractReaction(Transform transformToFollow = null)
         {
-            IsCheck = true;
             if (IsTarget)
             {
                 TransformToFollow = transformToFollow;
                 npcStatisticParam.isFollow = true;
+                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId);
             }
             else
             {
-                npcStatisticParam.isAngry = true;
+                //IsCheck = true;
+                npcStatisticParam.isAngry = true; 
             }
         }
     }

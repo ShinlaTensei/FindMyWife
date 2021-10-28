@@ -16,8 +16,13 @@ namespace Game
 
         [SerializeField, CustomClassDrawer, ShowIf("targetType", TargetType.Animal)]
         private List<Hint> hintAnimal;
+        
+        [SerializeField, CustomClassDrawer, ShowIf("targetType", TargetType.Car)]
+        private List<Hint> hintCar;
 
         public int PrefabId => prefabId;
+        
+        public bool IsObjectiveActive { get; set; }
 
         public List<Hint> Hint
         {
@@ -47,10 +52,17 @@ namespace Game
         public string hintInfo;
     }
     
-    public enum HintType {Skin, Hair, Outfit, Bread, Color}
+    [System.Serializable]
+    public class HintCar
+    {
+        public Hint hintTypeCar;
+        public string hintInfo;
+    }
+    
+    public enum HintType {Skin, Hair, Outfit, Bread, Color, CarType}
     
     //public enum HintTypeAnimal {Bread, CoatColor}
     
-    public enum TargetType {Woman, Animal}
+    public enum TargetType {Woman, Animal, Car}
 }
 

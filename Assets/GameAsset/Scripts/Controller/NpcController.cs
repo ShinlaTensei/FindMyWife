@@ -4,6 +4,7 @@ using Base.Pattern;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.AI;
+using Base.MessageSystem;
 
 namespace Game
 {
@@ -11,10 +12,12 @@ namespace Game
     {
         [SerializeField] protected Transform graphicsRoot;
         [SerializeField] protected CharacterStateController stateController;
+        [SerializeField] protected ObjectiveController objectiveController;
 
         [SerializeField, ReadOnly] protected NpcStatisticParam npcStatisticParam = new NpcStatisticParam();
 
         protected NavMeshAgent _agent;
+        protected bool _isTarget = false;
         
         public TargetData TargetData { get; protected set; }
 
@@ -33,8 +36,20 @@ namespace Game
 
         public NpcStatisticParam NpcStatisticParam => npcStatisticParam;
 
-        public bool IsTarget { get; protected set; }
-        
+        public bool IsTarget
+        {
+            get
+            {
+                if (objectiveController.CurrentObjective.objectiveId == TargetData.PrefabId)
+                {
+                    return _isTarget;
+                }
+
+                return false;
+            }
+            protected set => _isTarget = value;
+        }
+
         public bool IsCheck { get; protected set; }
 
         public Transform TransformToFollow { get; protected set; }
@@ -51,16 +66,16 @@ namespace Game
 
         public virtual void InteractReaction(Transform transformToFollow = null)
         {
-            IsCheck = true;
-            
             if (!IsTarget)
             {
+                //IsCheck = true;
                 npcStatisticParam.isAngry = true;
             }
             else
             {
                 npcStatisticParam.isFollow = true;
                 TransformToFollow = transformToFollow;
+                Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId);
             }
         }
     }

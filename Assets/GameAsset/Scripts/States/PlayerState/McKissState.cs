@@ -25,13 +25,17 @@ namespace Game
         public override void EnterState(float dt, CharacterState fromState)
         {
             CharacterStateController.Animator.SetFloat(actionParam, Mathf.Clamp01(playerController.McStatisticParam.actionValue));
-            CharacterStateController.Animator.GetCurrentClipLength(ref animationClipLength);
         }
 
         public override void ExitStateBehaviour(float dt, CharacterState toState)
         {
             totalTime = 0;
             playerController.NpcDetected.InteractReaction(CacheTransform);
+            // if (playerController.McStatisticParam.isCorrectTarget)
+            // {
+            //     TargetData targetData = playerController.NpcDetected.TargetData;
+            //     Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId);
+            // }
         }
 
         public override void CheckExitTransition()
@@ -46,11 +50,13 @@ namespace Game
                 else
                 {
                     CharacterStateController.EnqueueTransition<NormalMovementState>();
-                    
-                    TargetData targetData = playerController.NpcDetected.TargetData;
-                    Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId);
                 }
             }
+        }
+
+        public override void PreUpdateBehaviour(float dt)
+        {
+            CharacterStateController.Animator.GetCurrentClipLength(ref animationClipLength);
         }
 
         public override void UpdateBehaviour(float dt)

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NpcHand
   - NPC
+  - Car
   layers:
   - Default
   - TransparentFX

@@ -231,6 +231,22 @@ namespace Base.Module
 
             return true;
         }
+        
+        public static bool GetCurrentClipLength(this Animator animator, int layerIndex, ref float length)
+        {
+            if (animator.runtimeAnimatorController == null) return false;
+
+            AnimatorClipInfo[] clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
+
+            if (clipInfo.Length == 0) return false;
+
+            float clipLength = clipInfo[0].clip.length;
+            float speed = animator.GetCurrentAnimatorStateInfo(0).speed;
+
+            length = Mathf.Abs(clipLength / speed);
+
+            return true;
+        }
 
         public static bool MatchTarget(this Animator animator, Vector3 targetPosition, Quaternion targetRotation, AvatarTarget avatarTarget, float startNormalizedTime,
             float targetNormalizedTime)

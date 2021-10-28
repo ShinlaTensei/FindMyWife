@@ -18,6 +18,7 @@ namespace Game
         [SerializeField] private List<TargetData> targetAnimalArr;
         [SerializeField] private Transform sceneObject;
         [SerializeField] private ObjectiveController objectiveController;
+        [SerializeField] private List<TargetData> targetCarArr;
 
         private void Start()
         {
@@ -39,6 +40,11 @@ namespace Game
             if (isComplete)
             {
                 Messenger.RaiseMessage(GameMessage.ObjectiveComplete, prefabId);
+            }
+
+            if (objectiveController.IsAllObjectiveCompleted)
+            {
+                GameManager.GameStatisticParam.isEndPointReach = true;
             }
         }
         
@@ -113,20 +119,15 @@ namespace Game
             listAnimal.Remove(targetAnimal);
             targetAnimal.AddGraphic(randomAnimalTarget, true);
             int animalLength = listWithoutAnimalTarget.Count;
-            for (int i = 0; i < animalLength; ++i)
+            for (int i = 0; i < listAnimal.Count; ++i)
             {
                 listAnimal[i].AddGraphic(listWithoutAnimalTarget[i % animalLength]);
             }
             
             objectiveController.AddObjective(new[] {objective1, objective2});
-        }
 
-        public void OnEndPointReach(GameObject obj, Sensor sensor)
-        {
-            if (objectiveController.IsAllObjectiveCompleted)
-            {
-                GameManager.GameStatisticParam.isEndPointReach = true;
-            }
+            TargetData car = targetCarArr.GetRandom();
+            objectiveController.AddObjective(new Objective() {isCompleted = false, objectiveId = car.PrefabId, objectiveType = car.TargetType});
         }
     }
 }

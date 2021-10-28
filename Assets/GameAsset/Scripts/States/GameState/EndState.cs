@@ -9,12 +9,13 @@ namespace Game
     public class EndState : GameState
     {
         [SerializeField] private GameEvent endGameNotify;
+        [SerializeField] private ObjectiveController objectiveController;
 
         public override void EnterStateBehaviour(float dt, GameState fromState)
         {
             base.EnterStateBehaviour(dt, fromState);
             
-            endGameNotify.InvokeEvent();
+            endGameNotify.InvokeEvent(new GameEventData {Data = objectiveController.IsAllObjectiveCompleted});
         }
 
         public override void CheckExitTransition()

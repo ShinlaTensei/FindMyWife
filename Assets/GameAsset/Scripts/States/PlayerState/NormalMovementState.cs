@@ -53,11 +53,23 @@ namespace Game
             {
                 CharacterStateController.EnqueueTransition<McKissState>();
             }
+            else if (_playerController.McStatisticParam.isLevelEnd)
+            {
+                CharacterStateController.EnqueueTransition<EndBehaviorState>();
+            }
         }
 
         public override void UpdateBehaviour(float dt)
         {
-            
+            if (_playerController.McStatisticParam.isCarDetected)
+            {
+                _playerController.McStatisticParam.isCarDetected = false;
+                TargetData targetData = _playerController.McStatisticParam.carDetected;
+                if (targetData.IsObjectiveActive)
+                {
+                    Messenger.RaiseMessage(GameMessage.ObjectiveCheck, targetData.TargetType, targetData.PrefabId);
+                }
+            }
         }
 
         protected override void Update()
