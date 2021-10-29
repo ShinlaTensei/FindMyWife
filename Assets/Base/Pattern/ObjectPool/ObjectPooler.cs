@@ -52,19 +52,20 @@ namespace Base.Pattern
         {
             if (isInitializeOnStart)
             {
-                InitObjectPool().Forget();
+                InitObjectPool();
             }
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             _sharedInstance = null;
             listPool.Clear();
         }
 
         #endregion
         
-        public static async UniTaskVoid InitObjectPool()
+        public static void InitObjectPool()
         {
             for (int i = 0; i < SharedInstance.listPool.Count; i++)
             {

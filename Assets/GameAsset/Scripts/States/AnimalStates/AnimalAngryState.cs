@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base.AssetReference;
+using Base.Audio;
 using Base.Module;
 using Base.Pattern;
 using UnityEngine;
@@ -10,6 +12,7 @@ namespace Game
     {
         private float _totalTime = 0;
         private float _crrClipLength = 0;
+        private int _barkingSoundId = 0;
 
         private AnimalController _animalController;
 
@@ -28,6 +31,7 @@ namespace Game
         public override void EnterState(float dt, CharacterState fromState)
         {
             CharacterStateController.Animator.GetCurrentClipLength(ref _crrClipLength);
+            _barkingSoundId = SoundManager.PlaySound(AssetReference.Instance.GetSoundAsset(SoundRefName.Barking), true);
         }
 
         public override void UpdateBehaviour(float dt) { }
@@ -41,6 +45,7 @@ namespace Game
         {
             if (_totalTime >= _crrClipLength * 7f)
             {
+                SoundManager.GetAudio(_barkingSoundId).Stop();
                 _animalController.NpcStatisticParam.isAngry = false;
                 CharacterStateController.EnqueueTransition<AnimalNormalState>();
             }

@@ -75,6 +75,12 @@ namespace Game
             GameManager.GameStatisticParam.isReplay = true;
         }
 
+        public void OnSkipLevelClick()
+        {
+            OnReplayClick();
+            GameManager.GameStatisticParam.isSkipLevel = true;
+        }
+
         private void InitHint()
         {
             if (_targetDataList.Count > 0)

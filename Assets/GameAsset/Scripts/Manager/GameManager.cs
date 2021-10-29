@@ -1,6 +1,11 @@
+using System;
 using Base;
+using Base.AssetReference;
+using Base.Audio;
 using Base.GameEventSystem;
+using Base.MessageSystem;
 using Base.Pattern;
+using Facebook.Unity;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -13,12 +18,49 @@ namespace Game
         [SerializeField] private ObjectiveController objectiveController;
         [SerializeField, Space] private GameEvent endGameNotify;
         public static GameStatisticParam GameStatisticParam => Instance.gameStatisticParam;
+
+        private void Awake()
+        {
+            if (!FB.IsInitialized)
+            {
+                FB.Init();
+            }
+            else
+            {
+                FB.ActivateApp();
+            }
+            
+            Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+            {
+                var dependencyStatus = task.Result;
+                if (dependencyStatus == Firebase.DependencyStatus.Available)
+                {
+                    // Create and hold a reference to your FirebaseApp,
+                    // where app is a Firebase.FirebaseApp property of your application class.
+                    var app = Firebase.FirebaseApp.DefaultInstance;
+
+                    // Set a flag here to indicate whether Firebase is ready to use by your app.
+                }
+                else
+                {
+                    Debug.LogError(String.Format(
+                        "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                    // Firebase Unity SDK is not safe to use here.
+                }
+            });
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             Application.targetFrameRate = 60;
 
             gameStateController.OnStateChanged += OnStateChanged;
+            
+            IronSource.Agent.validateIntegration();
+            IronSource.Agent.init("10003aae1", IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL);
+            IronSource.Agent.loadInterstitial();
+            IronSource.Agent.shouldTrackNetworkState(true);
         }
 
         protected override void OnDestroy()
@@ -26,6 +68,38 @@ namespace Game
             base.OnDestroy();
 
             gameStateController.OnStateChanged -= OnStateChanged;
+            Messenger.CleanUp();
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            IronSource.Agent.onApplicationPause(pauseStatus);
+        }
+
+        private void OnEnable()
+        {
+            IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
+            IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
+            IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
+            IronSourceEvents.onInterstitialAdShowFailedEvent += InterstitialAdShowFailedEvent;
+            IronSourceEvents.onInterstitialAdClosedEvent += InterstitialAdClosedEvent;
+
+            IronSourceEvents.onRewardedVideoAdClosedEvent += RewardedVideoAdClosedEvent;
+            IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
+            IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+        }
+
+        private void OnDisable()
+        {
+            IronSourceEvents.onInterstitialAdReadyEvent -= InterstitialAdReadyEvent;
+            IronSourceEvents.onInterstitialAdLoadFailedEvent -= InterstitialAdLoadFailedEvent;
+            IronSourceEvents.onInterstitialAdShowSucceededEvent -= InterstitialAdShowSucceededEvent;
+            IronSourceEvents.onInterstitialAdShowFailedEvent -= InterstitialAdShowFailedEvent;
+            IronSourceEvents.onInterstitialAdClosedEvent -= InterstitialAdClosedEvent;
+            
+            IronSourceEvents.onRewardedVideoAdClosedEvent -= RewardedVideoAdClosedEvent;
+            IronSourceEvents.onRewardedVideoAdEndedEvent -= RewardedVideoAdEndedEvent;
+            IronSourceEvents.onRewardedVideoAdRewardedEvent -= RewardedVideoAdRewardedEvent;
         }
 
         private void OnStateChanged(GameState from, GameState to)
@@ -34,12 +108,67 @@ namespace Game
             {
                 gameStatisticParam.Reset();
             }
+            else if (to is StartState)
+            {
+                SoundManager.PlayMusic(AssetReference.Instance.GetSoundAsset(SoundRefName.Background), 1f, true, true);
+            }
             else if (to is EndState)
             {
                 bool isWin = objectiveController.IsAllObjectiveCompleted;
+                gameStatisticParam.isWin = isWin;
                 endGameNotify.InvokeEvent(new GameEventData(isWin));
                 gameStatisticParam.levelIndex += isWin ? 1 : 0;
+                SoundManager.StopAllMusic();
+                if (isWin) SoundManager.PlaySound(AssetReference.Instance.GetSoundAsset(SoundRefName.Victory));
+                else SoundManager.PlaySound(AssetReference.Instance.GetSoundAsset(SoundRefName.Defeat));
             }
+            else if (to is ReplayState)
+            {
+                
+            }
+        }
+        
+        private void InterstitialAdReadyEvent()
+        {
+
+        }
+
+        private void InterstitialAdShowSucceededEvent()
+        {
+
+        }
+
+        private void InterstitialAdLoadFailedEvent(IronSourceError error)
+        {
+
+        }
+
+        private void InterstitialAdShowFailedEvent(IronSourceError error)
+        {
+
+        }
+
+        private void InterstitialAdClosedEvent()
+        {
+            
+        }
+
+        private void RewardedVideoAdClosedEvent()
+        {
+            Debug.Log("Reward Ad Closed Event");
+            gameStatisticParam.isSkipLevel = false;
+        }
+
+        private void RewardedVideoAdEndedEvent()
+        {
+            
+        }
+
+        private void RewardedVideoAdRewardedEvent(IronSourcePlacement placement)
+        {
+            Debug.Log("Reward Ad Reward Event");
+            gameStatisticParam.levelIndex += 1;
+            gameStatisticParam.isSkipLevel = false;
         }
     }
     
@@ -48,6 +177,8 @@ namespace Game
     {
         public bool isEndPointReach = false;
         public bool isReplay = false;
+        public bool isWin = false;
+        public bool isSkipLevel = false;
         public bool isTimeOut = false;
         public int levelIndex = 1;
 
@@ -56,6 +187,8 @@ namespace Game
             isReplay = false;
             isTimeOut = false;
             isEndPointReach = false;
+            isSkipLevel = false;
+            isWin = false;
         }
     }
     

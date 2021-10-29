@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Base.AssetReference;
+using Base.Audio;
 using Base.Module;
 using Base.Pattern;
 using Cysharp.Threading.Tasks;
@@ -36,7 +38,13 @@ namespace Game
                 {
                     WaitForGetSlap().Forget();
                 }
-                else _crrClipTime = 3f;
+                else
+                {
+                    _crrClipTime = 2f;
+                    #if UNITY_ANDROID
+                    Taptic.AndroidTaptic.Vibrate();
+                    #endif
+                }
             }
         }
 
@@ -95,6 +103,10 @@ namespace Game
             if (result.collider.CompareTag("NpcHand"))
             {
                 _isHit = true;
+                SoundManager.PlaySound(AssetReference.Instance.GetSoundAsset(SoundRefName.Slaped));
+                #if UNITY_ANDROID
+                Taptic.AndroidTaptic.Vibrate();
+                #endif
             }
         }
     }
