@@ -14,7 +14,7 @@ namespace Game
         {
             base.EnterStateBehaviour(dt, fromState);
             SceneManager.LoadSceneAsync("UIScene", LoadSceneMode.Additive);
-            mainGameSceneOperation = SceneManager.LoadSceneAsync("MainGameScene", LoadSceneMode.Additive);
+            mainGameSceneOperation = SceneManager.LoadSceneAsync($"Level {(GameManager.GameStatisticParam.levelIndex - 1) % 2}", LoadSceneMode.Additive);
         }
 
         public override void CheckExitTransition()

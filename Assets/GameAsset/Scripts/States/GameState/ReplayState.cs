@@ -12,8 +12,8 @@ namespace Game
         public override void EnterStateBehaviour(float dt, GameState fromState)
         {
             base.EnterStateBehaviour(dt, fromState);
-
-            mainSceneAsyncOperation = SceneManager.UnloadSceneAsync("MainGameScene");
+            int levelIndex = (GameManager.GameStatisticParam.levelIndex) % 2;
+            mainSceneAsyncOperation = SceneManager.UnloadSceneAsync($"Level {levelIndex}");
             SceneManager.UnloadSceneAsync("UIScene");
         }
 

@@ -27,7 +27,7 @@ namespace Game
             get
             {
                 if (targetType == TargetType.Woman) return hint;
-
+                if (targetType == TargetType.Car) return hintCar;
                 return hintAnimal;
             }
         }

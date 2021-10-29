@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -16,6 +17,7 @@ namespace Game
         [SerializeField] private RangeSensor rangeSensor;
         [SerializeField] private Transform kissPoint;
         [SerializeField] private ObjectiveController objectiveController;
+        [SerializeField] private Transform arrowTransform;
         [SerializeField, ReadOnly] private McStatisticParam mcStatisticParam;
 
         public McStatisticParam McStatisticParam => mcStatisticParam;
@@ -23,6 +25,17 @@ namespace Game
         public NpcController NpcDetected { get; private set; }
         
         private CancellationTokenSource _checkTargetToken = new CancellationTokenSource();
+
+        private GameObject _sensorTarget = null;
+
+        private void Update()
+        {
+            if (_sensorTarget != null)
+            {
+                Vector3 pos = _sensorTarget.transform.position;
+                arrowTransform.position = new Vector3(pos.x, pos.y + 4, pos.z);
+            }
+        }
 
         protected override void OnDestroy()
         {
@@ -40,11 +53,23 @@ namespace Game
         public void PulseSensor()
         {
             _checkTargetToken = new CancellationTokenSource();
-            rangeSensor.Pulse();
+            //rangeSensor.Pulse();
+            if (_sensorTarget != null) CheckTarget(_sensorTarget).Forget();
         }
         public void OnDetectNpc(GameObject obj, Sensor sensor)
         {
-            CheckTarget(obj).Forget();
+            //CheckTarget(obj).Forget();
+            arrowTransform.gameObject.SetActive(true);
+            _sensorTarget = sensor.DetectedObjectsOrderedByDistance[0];
+        }
+
+        public void OnLoseDetection(GameObject obj, Sensor sensor)
+        {
+            if (obj == _sensorTarget)
+            {
+                arrowTransform.gameObject.SetActive(false);
+                _sensorTarget = null;
+            }
         }
 
         public void OnEndStateNotify(GameEventData data)

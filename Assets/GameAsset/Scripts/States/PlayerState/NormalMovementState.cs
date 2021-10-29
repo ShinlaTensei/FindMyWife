@@ -75,7 +75,7 @@ namespace Game
 
         protected override void Update()
         {
-            if (_isTouch)
+            if (_isTouch && !_playerController.McStatisticParam.isLevelEnd)
             {
                 HandlingMovement();
             }
