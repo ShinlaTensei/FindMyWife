@@ -81,7 +81,7 @@ namespace Game
             }
         }
 
-        private void LateUpdate()
+        public override void PostUpdateBehaviour(float dt)
         {
             if (CharacterStateController.Animator == null)
             {
@@ -100,7 +100,7 @@ namespace Game
             
             CharacterStateController.Animator.SetFloat(speedParam, _horizontalMove);
         }
-        
+
 
         private void OnInputResponse(InputPhase phase, Vector3 inputPos)
         {

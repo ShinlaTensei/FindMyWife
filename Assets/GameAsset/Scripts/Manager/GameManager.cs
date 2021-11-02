@@ -4,6 +4,7 @@ using Base.AssetReference;
 using Base.Audio;
 using Base.GameEventSystem;
 using Base.MessageSystem;
+using Base.Module;
 using Base.Pattern;
 using Facebook.Unity;
 using NaughtyAttributes;
@@ -29,6 +30,13 @@ namespace Game
             {
                 FB.ActivateApp();
             }
+            
+            SaveLoad.LoadFromJson(out ConfigData config, "config.json");
+            if (config == null)
+            {
+                config = new ConfigData();
+            }
+            gameStatisticParam.configData = config;
             
             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
@@ -69,6 +77,14 @@ namespace Game
 
             gameStateController.OnStateChanged -= OnStateChanged;
             Messenger.CleanUp();
+
+            gameStatisticParam.configData.isFirstLaunch = false;
+            SaveLoad.SaveToJson(gameStatisticParam.configData, "config.json");
+        }
+
+        private void OnApplicationQuit()
+        {
+            
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -181,6 +197,7 @@ namespace Game
         public bool isSkipLevel = false;
         public bool isTimeOut = false;
         public int levelIndex = 1;
+        public ConfigData configData;
 
         public void Reset()
         {

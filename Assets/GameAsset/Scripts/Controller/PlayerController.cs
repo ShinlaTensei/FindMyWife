@@ -59,8 +59,12 @@ namespace Game
         public void OnDetectNpc(GameObject obj, Sensor sensor)
         {
             //CheckTarget(obj).Forget();
-            arrowTransform.gameObject.SetActive(true);
-            _sensorTarget = sensor.DetectedObjectsOrderedByDistance[0];
+            NpcController npc = obj.GetComponent<NpcController>();
+            if (!npc.IsGet)
+            {
+                arrowTransform.gameObject.SetActive(true);
+                _sensorTarget = sensor.DetectedObjectsOrderedByDistance[0];
+            }
         }
 
         public void OnLoseDetection(GameObject obj, Sensor sensor)

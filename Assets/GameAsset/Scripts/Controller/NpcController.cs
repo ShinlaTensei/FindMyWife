@@ -51,6 +51,8 @@ namespace Game
         }
 
         public bool IsCheck { get; protected set; }
+        
+        public bool IsGet { get; private set; }
 
         public Transform TransformToFollow { get; protected set; }
         public virtual void AddGraphic(TargetData child, bool isTarget = false)
@@ -76,6 +78,7 @@ namespace Game
                 IsCheck = true;
                 npcStatisticParam.isFollow = true;
                 TransformToFollow = transformToFollow;
+                IsGet = true;
                 Messenger.RaiseMessage(GameMessage.ObjectiveCheck, TargetData.TargetType, TargetData.PrefabId, Position);
             }
         }

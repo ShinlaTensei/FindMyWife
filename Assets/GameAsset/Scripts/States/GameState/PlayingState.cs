@@ -33,7 +33,10 @@ namespace Game
 
         public override void UpdateBehaviour(float dt)
         {
-            Messenger.RaiseMessage(SystemMessage.Input, inputAction.Phase, inputAction.Position);
+            if (!GameManager.GameStatisticParam.configData.isFirstLaunch)
+            {
+                Messenger.RaiseMessage(SystemMessage.Input, inputAction.Phase, inputAction.Position);
+            }
         }
     } 
 }

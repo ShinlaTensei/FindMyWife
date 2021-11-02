@@ -22,6 +22,7 @@ namespace Game
 
         [SerializeField, Space] private List<GameObject> endPageChild = new List<GameObject>();
         [SerializeField] private Text levelText;
+        [SerializeField] private UiTouchHandler uiTouchHandler;
 
         private List<TargetData> _targetDataList = new List<TargetData>();
 
@@ -57,6 +58,11 @@ namespace Game
             timer.OnTimerRun(true);
             timer.Init(1);
             levelText.text = $"Level {GameManager.GameStatisticParam.levelIndex}";
+
+            if (GameManager.GameStatisticParam.configData.isFirstLaunch)
+            {
+                pagesList[3].SetActive(true);
+            }
         }
 
         public void OnEndStateNotify(GameEventData data)
@@ -124,12 +130,22 @@ namespace Game
         {
             Messenger.RegisterListener<TargetData>(GameMessage.RegisterTarget, OnRegisterTarget);
             Messenger.RegisterListener<int>(GameMessage.ObjectiveComplete, OnObjectiveComplete);
+
+            uiTouchHandler.onPointerClick += OnPointerClick;
         }
 
         private void RemoveListener()
         {
             Messenger.RemoveListener<TargetData>(GameMessage.RegisterTarget, OnRegisterTarget);
             Messenger.RemoveListener<int>(GameMessage.ObjectiveComplete, OnObjectiveComplete);
+
+            uiTouchHandler.onPointerClick -= OnPointerClick;
+        }
+
+        private void OnPointerClick()
+        {
+            pagesList[3].SetActive(false);
+            GameManager.GameStatisticParam.configData.isFirstLaunch = false;
         }
 
         private void OnRegisterTarget(TargetData target)

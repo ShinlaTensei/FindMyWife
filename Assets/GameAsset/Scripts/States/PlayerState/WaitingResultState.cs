@@ -41,7 +41,7 @@ namespace Game
                 else
                 {
                     _crrClipTime = 2f;
-                    #if UNITY_ANDROID
+                    #if !UNITY_EDITOR
                     Taptic.AndroidTaptic.Vibrate();
                     #endif
                 }
@@ -104,7 +104,7 @@ namespace Game
             {
                 _isHit = true;
                 SoundManager.PlaySound(AssetReference.Instance.GetSoundAsset(SoundRefName.Slaped));
-                #if UNITY_ANDROID
+                #if !UNITY_EDITOR
                 Taptic.AndroidTaptic.Vibrate();
                 #endif
             }
