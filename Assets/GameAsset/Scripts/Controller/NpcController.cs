@@ -52,7 +52,7 @@ namespace Game
 
         public bool IsCheck { get; protected set; }
         
-        public bool IsGet { get; private set; }
+        public bool IsGet { get; protected set; }
 
         public Transform TransformToFollow { get; protected set; }
         public virtual void AddGraphic(TargetData child, bool isTarget = false)

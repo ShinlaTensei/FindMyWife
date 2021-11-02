@@ -33,7 +33,7 @@ namespace Game
             if (_sensorTarget != null)
             {
                 Vector3 pos = _sensorTarget.transform.position;
-                arrowTransform.position = new Vector3(pos.x, pos.y + 4, pos.z);
+                //arrowTransform.position = new Vector3(pos.x, pos.y + 4, pos.z);
             }
         }
 
@@ -60,9 +60,13 @@ namespace Game
         {
             //CheckTarget(obj).Forget();
             NpcController npc = obj.GetComponent<NpcController>();
-            if (!npc.IsGet)
+            if (npc && !npc.IsGet)
             {
-                arrowTransform.gameObject.SetActive(true);
+                //arrowTransform.gameObject.SetActive(true);
+                _sensorTarget = sensor.DetectedObjectsOrderedByDistance[0];
+            }
+            else if (!npc)
+            {
                 _sensorTarget = sensor.DetectedObjectsOrderedByDistance[0];
             }
         }
@@ -71,7 +75,7 @@ namespace Game
         {
             if (obj == _sensorTarget)
             {
-                arrowTransform.gameObject.SetActive(false);
+                //arrowTransform.gameObject.SetActive(false);
                 _sensorTarget = null;
             }
         }

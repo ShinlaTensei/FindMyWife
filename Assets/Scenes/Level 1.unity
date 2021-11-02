@@ -2169,7 +2169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108565126712447392}
-  m_LocalRotation: {x: 0.12094982, y: 0.000000003043524, z: 0.00000002085277, w: 0.9926587}
+  m_LocalRotation: {x: 0.120949805, y: 0.000000003043524, z: 0.00000002085277, w: 0.9926587}
   m_LocalPosition: {x: -13.21, y: -0.55999994, z: -28.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4502,7 +4502,7 @@ MonoBehaviour:
   TestLOSTargetsOnly: 0
   NumberOfRays: 1
   MinimumVisibility: 0.5
-  SensorRange: 5
+  SensorRange: 3
   DetectsOnLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -5599,7 +5599,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108565128176267144}
-  m_LocalRotation: {x: 0.12094982, y: 0.000000003043524, z: 0.00000002085277, w: 0.9926587}
+  m_LocalRotation: {x: 0.120949805, y: 0.000000003043524, z: 0.00000002085277, w: 0.9926587}
   m_LocalPosition: {x: -13.21, y: -0.55999994, z: -28.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

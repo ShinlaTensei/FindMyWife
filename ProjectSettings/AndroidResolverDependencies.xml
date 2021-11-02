@@ -16,8 +16,10 @@
     <package>com.google.firebase:firebase-analytics-unity:8.0.0</package>
     <package>com.google.firebase:firebase-app-unity:8.0.0</package>
     <package>com.google.firebase:firebase-common:20.0.0</package>
+    <package>com.ironsource.adapters:vungleadapter:4.3.12</package>
     <package>com.ironsource.sdk:mediationsdk:7.1.7</package>
     <package>com.parse.bolts:bolts-android:1.4.0</package>
+    <package>com.vungle:publisher-sdk-android:6.10.2</package>
   </packages>
   <files>
     <file>Assets/Plugins/Android/androidx.activity.activity-1.0.0.aar</file>
@@ -76,6 +78,7 @@
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-api-19.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-stats-17.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-tasks-17.2.1.aar</file>
+    <file>Assets/Plugins/Android/com.google.code.gson.gson-2.8.6.jar</file>
     <file>Assets/Plugins/Android/com.google.firebase.firebase-analytics-19.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.firebase.firebase-analytics-unity-8.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.firebase.firebase-annotations-16.0.0.jar</file>
@@ -86,11 +89,16 @@
     <file>Assets/Plugins/Android/com.google.firebase.firebase-installations-interop-17.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.firebase.firebase-measurement-connector-19.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.zxing.core-3.3.3.jar</file>
+    <file>Assets/Plugins/Android/com.ironsource.adapters.vungleadapter-4.3.12.aar</file>
     <file>Assets/Plugins/Android/com.ironsource.sdk.mediationsdk-7.1.7.aar</file>
     <file>Assets/Plugins/Android/com.parse.bolts.bolts-android-1.4.0.jar</file>
     <file>Assets/Plugins/Android/com.parse.bolts.bolts-applinks-1.4.0.jar</file>
     <file>Assets/Plugins/Android/com.parse.bolts.bolts-tasks-1.4.0.jar</file>
+    <file>Assets/Plugins/Android/com.squareup.okhttp3.okhttp-3.12.12.jar</file>
+    <file>Assets/Plugins/Android/com.squareup.okio.okio-1.15.0.jar</file>
+    <file>Assets/Plugins/Android/com.vungle.publisher-sdk-android-6.10.2.aar</file>
     <file>Assets/Plugins/Android/org.jetbrains.annotations-13.0.jar</file>
+    <file>Assets/Plugins/Android/org.jetbrains.kotlin.kotlin-android-extensions-runtime-1.5.10.jar</file>
     <file>Assets/Plugins/Android/org.jetbrains.kotlin.kotlin-stdlib-1.5.10.jar</file>
     <file>Assets/Plugins/Android/org.jetbrains.kotlin.kotlin-stdlib-common-1.5.10.jar</file>
     <file>Assets/Plugins/Android/org.jetbrains.kotlin.kotlin-stdlib-jdk7-1.5.10.jar</file>

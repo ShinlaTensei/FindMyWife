@@ -99,38 +99,44 @@ namespace Game
                 listNpc[i].AddGraphic(listWithoutTarget[i % length]);
             }
             
-            // -------------------------------------------------- Set up animal target
-            TargetData randomAnimalTarget = targetAnimalArr.GetRandom();
+            objectiveController.AddObjective(objective1);
 
-            Objective objective2 = new Objective() { isCompleted = false, objectiveId = randomAnimalTarget.PrefabId, objectiveType = randomAnimalTarget.TargetType };
-            
-            List<TargetData> listWithoutAnimalTarget = targetAnimalArr.ToList();
-            listWithoutAnimalTarget.Remove(randomAnimalTarget);
-            
-            Messenger.RaiseMessage(GameMessage.RegisterTarget, randomAnimalTarget);
-            
-            List<Transform> spawnPointAnimalList = mapsArr[0].SpawnPointAnimalList.ToList();
-            spawnPointAnimalList.Shuffle();
-            List<AnimalController> listAnimal = new List<AnimalController>();
-            for (int i = 0; i < spawnPointAnimalList.Count; ++i)
+            if (GameManager.GameStatisticParam.levelIndex > 1)
             {
-                AnimalController animal = Instantiate(animalPrefab, spawnPointAnimalList[i].position, spawnPointAnimalList[i].rotation, sceneObject);
-                listAnimal.Add(animal);
-                animal.NpcStatisticParam.idleValue = i % 4f;
-            }
-            
-            listAnimal.Shuffle();
-            AnimalController targetAnimal = listAnimal[0];
-            listAnimal.Remove(targetAnimal);
-            targetAnimal.AddGraphic(randomAnimalTarget, true);
-            int animalLength = listWithoutAnimalTarget.Count;
-            for (int i = 0; i < listAnimal.Count; ++i)
-            {
-                listAnimal[i].AddGraphic(listWithoutAnimalTarget[i % animalLength]);
-            }
-            
-            objectiveController.AddObjective(new[] {objective1, objective2});
+                // -------------------------------------------------- Set up animal target
+                TargetData randomAnimalTarget = targetAnimalArr.GetRandom();
 
+                Objective objective2 = new Objective() { isCompleted = false, objectiveId = randomAnimalTarget.PrefabId, objectiveType = randomAnimalTarget.TargetType };
+            
+                List<TargetData> listWithoutAnimalTarget = targetAnimalArr.ToList();
+                listWithoutAnimalTarget.Remove(randomAnimalTarget);
+            
+                Messenger.RaiseMessage(GameMessage.RegisterTarget, randomAnimalTarget);
+            
+                List<Transform> spawnPointAnimalList = mapsArr[0].SpawnPointAnimalList.ToList();
+                spawnPointAnimalList.Shuffle();
+                List<AnimalController> listAnimal = new List<AnimalController>();
+                for (int i = 0; i < spawnPointAnimalList.Count; ++i)
+                {
+                    AnimalController animal = Instantiate(animalPrefab, spawnPointAnimalList[i].position, spawnPointAnimalList[i].rotation, sceneObject);
+                    listAnimal.Add(animal);
+                    animal.NpcStatisticParam.idleValue = i % 4f;
+                }
+            
+                listAnimal.Shuffle();
+                AnimalController targetAnimal = listAnimal[0];
+                listAnimal.Remove(targetAnimal);
+                targetAnimal.AddGraphic(randomAnimalTarget, true);
+                int animalLength = listWithoutAnimalTarget.Count;
+                for (int i = 0; i < listAnimal.Count; ++i)
+                {
+                    listAnimal[i].AddGraphic(listWithoutAnimalTarget[i % animalLength]);
+                }
+            
+                objectiveController.AddObjective(objective2);
+            }
+
+            // Set up car target
             TargetData car = targetCarArr.GetRandom();
             objectiveController.AddObjective(new Objective() {isCompleted = false, objectiveId = car.PrefabId, objectiveType = car.TargetType});
             Messenger.RaiseMessage(GameMessage.RegisterTarget, car);

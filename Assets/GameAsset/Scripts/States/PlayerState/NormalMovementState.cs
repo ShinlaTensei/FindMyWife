@@ -112,6 +112,8 @@ namespace Game
                     _horizontalMove = 1;
                     break;
                 case InputPhase.Moved:
+                    _isTouch = true;
+                    _horizontalMove = 1;
                     _deltaClick = inputPos - _posClickOld;
                     _posClickOld = inputPos;
                     break;
