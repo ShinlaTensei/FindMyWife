@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a738157c5f318014b8451472211ee1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  isOverrideAnimator: 0
+  runtimeAnimatorController: {fileID: 0}
 --- !u!1 &5164817129036519851
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +178,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 10
+  m_Speed: 14
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 180

@@ -88,7 +88,11 @@ SpriteAtlas:
     - {fileID: 2800000, guid: f59c35a9fb333a44f8dd0223f67acb7c, type: 3}
     - {fileID: 2800000, guid: 0f701898ae2815e4dba13e52a885301f, type: 3}
     - {fileID: 2800000, guid: 932714cebea496b45bd3ac388ed6e7ad, type: 3}
-    totalSpriteSurfaceArea: 2344890
+    - {fileID: 2800000, guid: 256d31cdcf9b57345b24077183e317b5, type: 3}
+    - {fileID: 2800000, guid: 630bfd923cd9b634fbb61bb3c3370d02, type: 3}
+    - {fileID: 2800000, guid: d7b1c83688957ca44b4aea0fff3604ae, type: 3}
+    - {fileID: 2800000, guid: 1e4734d969c85f54a8ced94c55aa7e19, type: 3}
+    totalSpriteSurfaceArea: 3415443
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -101,17 +105,20 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 43eef371e810b10499959566dffaf884, type: 3}
   - {fileID: 21300000, guid: bccbb9b1bf4c6d246aa906b628965813, type: 3}
   - {fileID: 21300000, guid: 90133812b8224c04098ecc77c8da5bb3, type: 3}
+  - {fileID: 21300000, guid: 630bfd923cd9b634fbb61bb3c3370d02, type: 3}
   - {fileID: 21300000, guid: b9953ea29a8031e488916fd1f8a962b5, type: 3}
   - {fileID: 21300000, guid: b1c008e3968e69545a339a2eb85af7b8, type: 3}
   - {fileID: 21300000, guid: f3d6911421c694b4cb33f13ab06946b2, type: 3}
   - {fileID: 21300000, guid: 43f26b05046f9584e87679afc0f53234, type: 3}
   - {fileID: 21300000, guid: bd0e55954d1efab408f04c98b82b2513, type: 3}
   - {fileID: 21300000, guid: 376886d5a98c7bf4ab4e2a0b52f05d93, type: 3}
+  - {fileID: 21300000, guid: d7b1c83688957ca44b4aea0fff3604ae, type: 3}
   - {fileID: 21300000, guid: 0735bb37cf9b6a64e8fc63ffe4620d52, type: 3}
   - {fileID: 21300000, guid: de753c68ca551b74885d9252d41458c1, type: 3}
   - {fileID: 21300000, guid: 667daa78fd2c3e54a82994fbeb95c0bc, type: 3}
   - {fileID: 21300000, guid: 0f701898ae2815e4dba13e52a885301f, type: 3}
   - {fileID: 21300000, guid: f59c35a9fb333a44f8dd0223f67acb7c, type: 3}
+  - {fileID: 21300000, guid: 1e4734d969c85f54a8ced94c55aa7e19, type: 3}
   - {fileID: 21300000, guid: deead10a6d7975c428825f55ab64658c, type: 3}
   - {fileID: 21300000, guid: 4a71a37a1f75a204bb138b7bc6d62165, type: 3}
   - {fileID: 21300000, guid: 292fd55b1e5376f4cb748ebc1d750c9f, type: 3}
@@ -122,6 +129,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dac104ad1b2e20846aadda6b764ffd86, type: 3}
   - {fileID: 21300000, guid: acca35ad0a80ab24d96221a4fd5ae117, type: 3}
   - {fileID: 21300000, guid: f31968bd7f134a54a9a8f8bd39da1874, type: 3}
+  - {fileID: 21300000, guid: 256d31cdcf9b57345b24077183e317b5, type: 3}
   - {fileID: 21300000, guid: 9f3c165ec8ac9964c8d53d9d4f8aee9a, type: 3}
   - {fileID: 21300000, guid: d9ab1eae86872614a804541f51a92e3e, type: 3}
   - {fileID: 21300000, guid: 932714cebea496b45bd3ac388ed6e7ad, type: 3}
@@ -135,17 +143,20 @@ SpriteAtlas:
   - Haptic
   - pop_text
   - skip_level
+  - GUI_PopUp_Result_win
   - Sound_Off
   - Pop up
   - Icon Setting
   - Icon_bar
   - Green Button_OK
   - dog breed
+  - SUCCESS__
   - BT_grey
   - SUCCESS
   - Find my wife_bar
   - skin cars icon
   - Shirt
+  - TIME OUT __
   - Background Icon Setting
   - OUT
   - Outfit
@@ -156,6 +167,7 @@ SpriteAtlas:
   - cars icon
   - clock_bar
   - dog skins
+  - GUI_PopUp_Result_lose
   - Haptic_off
   - arrow2heads
   - Skin
